@@ -1,5 +1,5 @@
 <template>
-  <nav class="container mx-auto flex justify-around">
+  <nav class="container mx-auto md:flex md:justify-around hidden">
     <NuxtLink
       v-for="item in itemRoutes"
       :key="item.to"

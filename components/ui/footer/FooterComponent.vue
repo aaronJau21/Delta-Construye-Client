@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white hidden">
     <div class="container mx-auto w-7/12 py-24">
       <div class="flex justify-between items-center">
         <div>

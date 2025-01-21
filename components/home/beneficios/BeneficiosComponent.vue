@@ -2,7 +2,7 @@
   <div class="container mx-auto mt-28 mb-16">
     <TitleComponent title="Beneficios para constructoras" />
 
-    <div class="grid grid-cols-4 mt-9 gap-x-9">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-9 gap-x-9">
       <div class="flex h-36 rounded-md gap-x-3 bg-white">
         <div
           class="w-28 bg-secundary flex justify-center items-center rounded-l-xl"
