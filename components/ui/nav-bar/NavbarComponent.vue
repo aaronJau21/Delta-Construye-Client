@@ -45,6 +45,7 @@
           name="heroicons-outline:bars-3"
           size="25"
           class="cursor-pointer"
+          @click="showModal.showModal()"
         />
         <Icon
           name="material-symbols:account-circle-full"
@@ -62,8 +63,9 @@
 <script setup lang="ts">
 import ItemRouteResponseComponent from "./ItemRouteResponseComponent.vue";
 import ItemsRoutesComponent from "./ItemsRoutesComponent.vue";
-import { ref } from "vue";
-const showRoutes = ref(false);
+import { useShowModalStore } from "~/store/ui/showModal.store";
+
+const showModal = useShowModalStore();
 </script>
 
 <style scoped></style>

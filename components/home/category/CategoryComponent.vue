@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-16">
+  <div class="md:container mx-5 md:mx-auto my-16">
     <TitleComponent title="Categorías" />
     <swiper
       :navigation="true"
@@ -13,28 +13,43 @@
       :loop="true"
     >
       <swiper-slide>
-        <div class="p-16">
+        <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
+        </div>
+        <div>
+          <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="p-16">
+        <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
+        </div>
+        <div>
+          <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="p-16">
+        <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
+        </div>
+        <div>
+          <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="p-16">
+        <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
+        </div>
+        <div>
+          <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="p-16">
+        <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
+        </div>
+        <div>
+          <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
     </swiper>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-16">
+  <div class="md:container mx-5 md:mx-auto my-16">
     <div class="flex justify-between pr-9">
       <TitleComponent title="Productos" />
       <NuxtLink
@@ -10,7 +10,7 @@
       </NuxtLink>
     </div>
 
-    <div class="grid grid-cols-4 mt-5 gap-x-5">
+    <div class="grid grid-cols-2 md:grid-cols-4 mt-5 gap-y-5 md:gap-y-0 gap-x-5">
       <div class="bg-white">
         <img src="/public/img/home/seed/ladrillo.png" alt="" />
         <div class="border-t border-black py-5">
