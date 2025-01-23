@@ -8,7 +8,6 @@
           placeholder="Buscar Productos"
           class="w-96 placeholder:p-2 border border-gray-400 rounded-l focus:border-primary outline-none"
         />
-        <!-- class="flex items-center bg-primary px-3 py-1 text-white rounded-r" -->
         <button
           class="flex items-center bg-primary px-3 py-1 text-white rounded-r hover:bg-green-600 transition-colors"
           aria-label="Buscar productos"
@@ -30,7 +29,9 @@
         />
       </div>
     </div>
-    <ItemRouteResponseComponent />
+    <div class="absolute bg-white w-[85%] z-10">
+      <ItemRouteResponseComponent />
+    </div>
     <!-- Header Movil -->
     <div class="flex justify-between items-center px-3 md:hidden">
       <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-32" />
@@ -53,7 +54,6 @@
         />
       </div>
     </div>
-
     <!-- Routers -->
     <ItemsRoutesComponent />
   </header>
