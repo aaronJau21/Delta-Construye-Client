@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showModal.show" class="bg-white h-screen w-screen z-10 md:hidden">
+  <div v-if="showModal.show" class="h-screen w-[80%] z-10 md:hidden">
     <div class="flex justify-end px-5">
       <button
         @click="showModal.showModal()"
@@ -17,13 +17,7 @@
       >
         {{ item.name }}
       </NuxtLink>
-      <a
-        :href="pdfUrl"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Catálogo
-      </a>
+      <a :href="pdfUrl" target="_blank" rel="noopener noreferrer"> Catálogo </a>
     </nav>
   </div>
 </template>
@@ -35,7 +29,4 @@ import { itemRoutes, pdfUrl } from "./itemRoutes";
 const showModal = useShowModalStore();
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

@@ -16,7 +16,7 @@
         <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
         </div>
-        <div>
+        <div class="md:hidden">
           <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
@@ -24,7 +24,7 @@
         <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
         </div>
-        <div>
+        <div class="md:hidden">
           <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
@@ -32,7 +32,7 @@
         <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
         </div>
-        <div>
+        <div class="md:hidden">
           <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
@@ -40,7 +40,7 @@
         <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
         </div>
-        <div>
+        <div class="md:hidden">
           <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>
@@ -48,7 +48,7 @@
         <div class="p-16 hidden md:block">
           <img src="/img/home/seed/Category1.png" alt="" class="w-96" />
         </div>
-        <div>
+        <div class="md:hidden">
           <img src="/img/home/seed/Category1.png" alt="" class="w-28" />
         </div>
       </swiper-slide>

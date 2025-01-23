@@ -30,7 +30,6 @@
         />
       </div>
     </div>
-
     <ItemRouteResponseComponent />
     <!-- Header Movil -->
     <div class="flex justify-between items-center px-3 md:hidden">
