@@ -22,11 +22,13 @@
           size="31"
           class="cursor-pointer"
         />
-        <Icon
-          name="material-symbols:account-circle-full"
-          size="31"
-          class="cursor-pointer"
-        />
+        <NuxtLink to="/auth/login">
+          <Icon
+            name="material-symbols:account-circle-full"
+            size="31"
+            class="cursor-pointer"
+          />
+        </NuxtLink>
       </div>
     </div>
     <div class="absolute bg-white w-[85%] z-10">
@@ -60,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from "#components";
 import ItemRouteResponseComponent from "./ItemRouteResponseComponent.vue";
 import ItemsRoutesComponent from "./ItemsRoutesComponent.vue";
 import { useShowModalStore } from "~/store/ui/showModal.store";

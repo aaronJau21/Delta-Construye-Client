@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white">
     <div class="container mx-auto w-7/12 py-24">
-      <div class="flex flex-col md:justify-between items-center">
+      <div class="flex flex-col md:flex-row md:justify-between items-center">
         <div>
           <img src="/logo.jpg" alt="Logo" class="w-36" />
           <p>Somos el marketplace B2B de la construcción en Perú</p>

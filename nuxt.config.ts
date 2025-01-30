@@ -11,4 +11,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  // Variables de entorno
+  runtimeConfig: {
+    public: {
+      api_url: process.env.NUXT_API_BASE_URL,
+    },
+  },
 });
