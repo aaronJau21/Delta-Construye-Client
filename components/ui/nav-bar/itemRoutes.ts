@@ -9,6 +9,5 @@ export const pdfUrl: string =
 export const itemRoutes: RouteItem[] = [
   { name: "Inicio", to: "/" },
   { name: "Marcas", to: "/providers" },
-  { name: "Categorías", to: "/providers/Hola Mundo" },
   { name: "Productos", to: "/products" },
 ];

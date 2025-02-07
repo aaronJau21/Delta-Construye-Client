@@ -1,13 +1,9 @@
 <template>
   <div>
-    <p>jhskljsdfk</p>
+    {{ route.params.sku }}
   </div>
 </template>
 
 <script setup lang="ts">
-
+const route = useRoute();
 </script>
-
-<style scoped>
-
-</style>
