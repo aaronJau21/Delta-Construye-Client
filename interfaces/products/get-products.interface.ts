@@ -17,7 +17,7 @@ export interface IGetProducts {
 export interface Datum {
   id: number;
   name: string;
-  description: null;
+  description: null | string;
   stock: number;
   price: string;
   status: boolean;

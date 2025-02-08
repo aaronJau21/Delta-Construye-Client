@@ -2,7 +2,7 @@
   <header class="py-5 bg-white">
     <!-- Header Options -->
     <div class="md:flex md:justify-between mx-9 items-center hidden">
-      <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-32" />
+      <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-40" />
       <div class="bg-white flex">
         <input
           placeholder="Buscar Productos"
