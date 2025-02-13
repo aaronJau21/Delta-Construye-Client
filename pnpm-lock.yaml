@@ -30,6 +30,9 @@ importers:
         specifier: latest
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
     devDependencies:
+      '@iconify-json/fa':
+        specifier: ^1.2.1
+        version: 1.2.1
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.1)
@@ -487,6 +490,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify-json/fa@1.2.1':
+    resolution: {integrity: sha512-aY2+tQNWq5ch+ShtAz3KKbNrFfwf4BPrXvyN7S4/lcf6Wms+kIxsd7C7KortzHZhoBnbhVN+qo+YUWLW7rLs9Q==}
 
   '@iconify/collections@1.0.508':
     resolution: {integrity: sha512-YaLPexnXGVLxUgDO9qcJKx7FxZhrBLEe2USu+Ibvcm5nsei2cXIUgJy+OA7ec998tpgD37eQz98nqPuS4N7Y4Q==}
@@ -3651,6 +3657,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.2':
     optional: true
+
+  '@iconify-json/fa@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/collections@1.0.508':
     dependencies:

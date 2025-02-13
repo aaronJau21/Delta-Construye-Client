@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white text-center">
     <div class="container mx-auto w-7/12 py-24">
       <div class="flex flex-col md:flex-row md:justify-between items-center">
-        <div>
+        <div class="flex flex-col items-center">
           <img src="/logo.jpg" alt="Logo" class="w-36" />
           <p>Somos el marketplace B2B de la construcción en Perú</p>
           <span> Razón Social: EJEMPLO S.A.C. </span>
@@ -14,7 +14,7 @@
           <p>Términos y Condiciones</p>
         </div>
         <div>
-          <h3 class="font-bold text-xl mb-9">Contactos</h3>
+          <h3 class="font-bold text-xl mb-9 text-center">Contactos</h3>
           <p>Teléfono: +51 912 188 792</p>
           <p>Email: ventas@equipconstruye.com</p>
         </div>
