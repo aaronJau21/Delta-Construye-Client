@@ -24,7 +24,6 @@ import type { IGetBrands, IGetCategoryResponse } from "~/interfaces";
 
 const config = useRuntimeConfig();
 
-
 const { data: brands, status } = useFetch<IGetBrands>(
   `${config.public.api_url}/brands?page=1`,
   { lazy: true }
