@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <div class="flex-1 grid grid-cols-5 gap-5 p-4">
+  <section>
+    <div v-if="status == 'pending'">
+      <LoadingComponent />
+    </div>
+    <div class="grid grid-cols-5 gap-5 p-4" v-else>
       <NuxtLink
         v-for="product in getProducts"
         :key="product.id"
@@ -32,10 +35,11 @@
         </div>
       </NuxtLink>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
+import LoadingComponent from "~/components/ui/loading/LoadingComponent.vue";
 import type { IGetProductsNoPrice } from "~/interfaces";
 
 const config = useRuntimeConfig();
