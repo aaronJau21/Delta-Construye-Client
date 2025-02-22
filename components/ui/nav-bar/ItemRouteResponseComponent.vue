@@ -4,7 +4,7 @@
     class="h-screen md:hidden transition-all animate-slide-in"
   >
     <div class="flex justify-between px-5">
-      <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-32" />
+      <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-48" />
       <button
         @click="showModal.showModal()"
         class="text-red-500 font-bold text-xl"

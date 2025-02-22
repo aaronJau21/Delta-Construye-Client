@@ -1,5 +1,5 @@
 export interface IGetBrands {
-  data: IData[];
+  brands: IData[];
 }
 
 export interface IData {

@@ -25,13 +25,13 @@ import type { IGetBrands, IGetCategoryResponse } from "~/interfaces";
 const config = useRuntimeConfig();
 
 const { data: brands, status } = useFetch<IGetBrands>(
-  `${config.public.api_url}/brands?page=1`,
+  `${config.public.api_url}/brands/public`,
   { lazy: true }
 );
 const { data: categories } = useFetch<IGetCategoryResponse[]>(
   `${config.public.api_url}/category`
 );
-const getBrands = computed(() => brands.value?.data ?? []);
+const getBrands = computed(() => brands.value?.brands ?? []);
 </script>
 
 <style scoped></style>
