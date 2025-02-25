@@ -2,67 +2,55 @@
   <div class="md:container mx-5 md:mx-auto mt-28 mb-16">
     <TitleComponent title="Beneficios para constructoras" />
 
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-9 gap-y-5 md:gap-y-0 md:gap-x-9"
-    >
-      <div class="flex h-28 md:h-36 rounded-md gap-x-3 bg-white">
-        <div
-          class="w-28 bg-secundary flex justify-center items-center rounded-l-xl"
+    <!-- 🌟 Slider solo si no caben 4 tarjetas -->
+    <div v-if="useSlider" class="mt-9">
+      <Swiper
+        :slidesPerView="slidesPerView"
+        :spaceBetween="15"
+        :loop="true"
+        :autoplay="{ delay: 3000, disableOnInteraction: false }"
+        :modules="[Autoplay]"
+        class="mySwiper"
+      >
+        <swiper-slide
+          v-for="(benefit, index) in benefits"
+          :key="index"
+          class="flex justify-center"
         >
-          <Icon
-            name="icon-park-solid:health-products"
-            size="69"
-            class="text-white"
-          />
-        </div>
-        <div class="md:flex-1 flex flex-col justify-center gap-y-1">
-          <h4 class="font-bold">Todos los materiales en un solo lugar</h4>
-          <p>Productos homologados multi marca y multi categoria.</p>
-        </div>
-      </div>
-      <div class="flex h-28 md:h-36 rounded-md gap-x-3 bg-white">
+          <div
+            class="flex w-full min-h-[160px] bg-white rounded-xl overflow-hidden shadow-lg transform transition-all hover:scale-105 hover:shadow-xl"
+          >
+            <div
+              class="w-24 flex justify-center items-center rounded-l-xl"
+              :class="['bg-gradient-to-r', benefit.gradient]"
+            >
+              <Icon :name="benefit.icon" size="60" class="text-white drop-shadow-lg" />
+            </div>
+            <div class="flex-1 flex flex-col justify-center gap-y-2 p-4">
+              <h4 class="font-bold text-lg text-gray-800">{{ benefit.title }}</h4>
+              <p class="text-sm text-gray-600">{{ benefit.description }}</p>
+            </div>
+          </div>
+        </swiper-slide>
+      </Swiper>
+    </div>
+
+    <!-- Tarjetas normales -->
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-9 gap-6">
+      <div
+        v-for="(benefit, index) in benefits"
+        :key="index"
+        class="flex min-h-[160px] rounded-xl overflow-hidden shadow-lg transform transition-all hover:scale-105 hover:shadow-xl bg-white"
+      >
         <div
-          class="w-28 bg-secundary flex justify-center items-center rounded-l-xl"
+          class="w-24 flex justify-center items-center rounded-l-xl"
+          :class="['bg-gradient-to-r', benefit.gradient]"
         >
-          <Icon
-            name="icon-park-solid:health-products"
-            size="69"
-            class="text-white"
-          />
+          <Icon :name="benefit.icon" size="60" class="text-white drop-shadow-lg" />
         </div>
-        <div class="md:flex-1 flex flex-col justify-center gap-y-1">
-          <h4 class="font-bold">Todos los materiales en un solo lugar</h4>
-          <p>Productos homologados multi marca y multi categoria.</p>
-        </div>
-      </div>
-      <div class="flex h-28 md:h-36 rounded-md gap-x-3 bg-white">
-        <div
-          class="w-28 bg-secundary flex justify-center items-center rounded-l-xl"
-        >
-          <Icon
-            name="icon-park-solid:health-products"
-            size="69"
-            class="text-white"
-          />
-        </div>
-        <div class="md:flex-1 flex flex-col justify-center gap-y-1">
-          <h4 class="font-bold">Todos los materiales en un solo lugar</h4>
-          <p>Productos homologados multi marca y multi categoria.</p>
-        </div>
-      </div>
-      <div class="flex h-28 md:h-36 rounded-md gap-x-3 bg-white">
-        <div
-          class="w-28 bg-secundary flex justify-center items-center rounded-l-xl"
-        >
-          <Icon
-            name="icon-park-solid:health-products"
-            size="69"
-            class="text-white"
-          />
-        </div>
-        <div class="md:flex-1 flex flex-col justify-center gap-y-1">
-          <h4 class="font-bold">Todos los materiales en un solo lugar</h4>
-          <p>Productos homologados multi marca y multi categoria.</p>
+        <div class="flex-1 flex flex-col justify-center gap-y-2 p-4">
+          <h4 class="font-bold text-lg text-gray-800">{{ benefit.title }}</h4>
+          <p class="text-sm text-gray-600">{{ benefit.description }}</p>
         </div>
       </div>
     </div>
@@ -70,7 +58,66 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import TitleComponent from "~/components/shared/title/TitleComponent.vue";
-</script>
 
-<style scoped></style>
+const useSlider = ref(false);
+const slidesPerView = ref(3);
+
+const checkScreenSize = () => {
+  const width = window.innerWidth;
+
+  if (width >= 1280) {
+    useSlider.value = false;
+  } else if (width >= 1024) {
+    useSlider.value = true;
+    slidesPerView.value = 3;
+  } else if (width >= 768) {
+    useSlider.value = true;
+    slidesPerView.value = 2;
+  } else {
+    useSlider.value = true;
+    slidesPerView.value = 1;
+  }
+};
+
+onMounted(() => {
+  checkScreenSize();
+  window.addEventListener("resize", checkScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", checkScreenSize);
+});
+
+// Lista de beneficios con gradientes llamativos
+const benefits = [
+  {
+    icon: "material-symbols:inventory",
+    title: "Todos los materiales en un solo lugar",
+    description: "Productos homologados multi marca y multi categoría.",
+    gradient: "from-blue-500 to-blue-700",
+  },
+  {
+    icon: "material-symbols:support-agent",
+    title: "Asesoría especializada",
+    description: "Expertos en construcción listos para ayudarte.",
+    gradient: "from-green-500 to-green-700",
+  },
+  {
+    icon: "mdi:tag-multiple",
+    title: "Precios competitivos",
+    description: "Ofertas exclusivas y precios accesibles para constructoras.",
+    gradient: "from-yellow-500 to-yellow-700",
+  },
+  {
+    icon: "mdi:truck-fast",
+    title: "Entrega rápida",
+    description: "Garantizamos entregas eficientes para tu proyecto.",
+    gradient: "from-red-500 to-red-700",
+  },
+];
+</script>

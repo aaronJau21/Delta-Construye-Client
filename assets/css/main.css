@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-200;
+  @apply bg-[#EDEDED];
 }
 
 a.router-link-exact-active {
   @apply border-b border-b-primary;
 }
+
