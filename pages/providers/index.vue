@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-100 relative">
+  <section class="bg-gray-100 relative flex justify-center p-4 lg:p-6">
     <!-- View Computer -->
     <ViewComputerProvider
       :categories="categories"
