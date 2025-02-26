@@ -1,31 +1,76 @@
 <template>
-  <div class="hidden lg:flex lg:container lg:mx-auto">
-    <div class="w-72">
-      <ul class="mt-16">
-        <li class="flex justify-between my-3" v-for="category in categories">
-          <div class="flex justify-center gap-x-3">
-            <input type="checkbox" />
-            <p class="flex-1">{{ category.name }}</p>
+  <div class="flex lg:flex lg:container gap-8 hidden">
+    <!-- Categorías -->
+    <div
+      class="w-84 rounded border border-gray-200 shadow-lg overflow-hidden max-h-screen"
+    >
+      <div class="bg-gray-400 p-4 text-white text-lg font-semibold">
+        Categorías
+      </div>
+      <ul class="p-4">
+        <li
+          class="flex justify-between items-center p-3 rounded-md hover:bg-gray-200 transition gap-2"
+          v-for="category in categories"
+          :key="category.id"
+        >
+          <div class="flex items-center gap-3">
+            <input
+              type="checkbox"
+              class="w-4 h-4 accent-gray-600 cursor-pointer flex-shrink-0"
+            />
+            <p class="text-gray-800 font-medium text-sm">{{ category.name }}</p>
           </div>
-          <p class="flex-1 flex justify-end">{{ category.brands_count }}</p>
+          <p class="text-gray-500 font-semibold text-sm">
+            {{ category.brands_count }}
+          </p>
         </li>
       </ul>
     </div>
+
+    <!-- Cargando -->
     <div class="flex-1" v-if="status == 'pending'">
       <LoadingComponent />
     </div>
-    <div class="flex-1 grid grid-cols-4 gap-5 p-4" v-else>
+
+    <!-- Marcas -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-full"
+    >
       <div
         v-for="brand in getBrands"
         :key="brand.id"
-        class="bg-white rounded-md shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
+        class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-1"
       >
-        <div class="h-52 border-b border-black z-10 flex justify-center">
-          <img :src="brand.logo" :alt="brand.name" class="w-full z-0" />
+        <div
+          class="h-52 border-b border-gray-300 flex justify-center items-center bg-white"
+        >
+          <img
+            :src="brand.logo"
+            :alt="brand.name"
+            class="w-40 h-40 object-contain"
+          />
         </div>
-        <h3 class="text-xl text-center my-5">
-          {{ brand.name }}
-        </h3>
+        <div
+          class="flex justify-between items-center text-lg font-semibold text-gray-700 text-center p-4"
+        >
+          <span class="text-left">{{ brand.name }}</span>
+          <span class="text-gray-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -42,5 +87,3 @@ defineProps<{
   getBrands: IData[];
 }>();
 </script>
-
-<style scoped></style>

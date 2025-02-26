@@ -41,7 +41,7 @@
         <LoadingComponent />
       </div>
 
-      <div class="grid grid-cols-2 gap-5 p-4" v-else>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-4" v-else>
         <div
           v-for="brand in getBrands"
           :key="brand.id"
