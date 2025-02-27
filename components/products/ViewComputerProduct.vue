@@ -1,6 +1,6 @@
 <template>
   <div class="hidden lg:flex lg:mx-16">
-    <p class="text-center">{{ total_product }}</p>
+    <p class="text-cenkter">{{ total_product }}</p>
     <div class="w-72">
       <ul class="mt-16">
         <li class="flex justify-between my-3" v-for="category in categories">
@@ -24,7 +24,7 @@
       >
         <div class="h-52 border-b border-black z-10 flex justify-center">
           <img
-            src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg"
+            :src="product.product_images[0].image"
             :alt="product.name"
             class="w-full z-0"
           />
