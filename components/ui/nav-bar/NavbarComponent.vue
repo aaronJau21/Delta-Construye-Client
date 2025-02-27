@@ -1,7 +1,7 @@
 <template>
   <header class="py-5 bg-white flex flex-col gap-5">
     <!-- Header Options -->
-    <div class="md:flex md:justify-between mx-9 items-center hidden ">
+    <div class="md:flex md:justify-between mx-9 items-center hidden">
       <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-40" />
       <div class="flex bg-white border border-gray-400 rounded">
         <input
@@ -70,14 +70,18 @@ import { NuxtLink } from "#components";
 import ItemRouteResponseComponent from "./ItemRouteResponseComponent.vue";
 import ItemsRoutesComponent from "./ItemsRoutesComponent.vue";
 import { useShowModalStore } from "~/store/ui/showModal.store";
+import { useLocalStorage, type RemovableRef } from "@vueuse/core";
 
 const showModal = useShowModalStore();
+const userText: RemovableRef<string | null> = useLocalStorage("user", null);
+const user = computed(() =>
+  userText.value ? JSON.parse(userText.value) : null
+);
+console.log(user.value);
 </script>
 
 <style scoped>
 input::placeholder {
   color: #9ca3af;
 }
-
-
 </style>
