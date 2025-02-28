@@ -21,6 +21,7 @@
           name="material-symbols:shopping-cart-outline"
           size="31"
           class="cursor-pointer transition-transform transform hover:scale-110 text-gray-700 hover:text-primary"
+          @click="isCartModalOpen = true"
         />
         <NuxtLink to="/auth/login" class="flex items-center">
           <Icon
@@ -45,6 +46,7 @@
           name="material-symbols:shopping-cart-outline"
           size="25"
           class="cursor-pointer"
+          @click="isCartModalOpen = true"
         />
         <Icon
           name="heroicons-outline:bars-3"
@@ -62,13 +64,18 @@
 
     <!-- Navigation Routes -->
     <ItemsRoutesComponent />
+
+    <!-- Cart Modal -->
+    <CartModal :isOpen="isCartModalOpen" @close="isCartModalOpen = false" />
   </header>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { NuxtLink } from "#components";
 import ItemRouteResponseComponent from "./ItemRouteResponseComponent.vue";
 import ItemsRoutesComponent from "./ItemsRoutesComponent.vue";
+import CartModal from "./CartModal.vue";
 import { useShowModalStore } from "~/store/ui/showModal.store";
 import { useLocalStorage, type RemovableRef } from "@vueuse/core";
 

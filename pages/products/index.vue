@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-100">
+  <section class="bg-gray-100 relative flex justify-center p-4 lg:p-6">
     <!-- view Computer -->
     <ViewComputerProduct
       :total_product="total_product"
@@ -15,7 +15,7 @@
       :status="status"
       :getProducts="getProducts"
     />
-
+<!-- 
     <div class="flex items-center justify-center py-5">
       <div class="flex justify-center items-center space-x-4">
         <button
@@ -34,7 +34,7 @@
           >
         </button>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 

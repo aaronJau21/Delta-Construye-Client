@@ -10,3 +10,27 @@ a.router-link-exact-active {
   @apply border-b border-b-primary;
 }
 
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dee2e5;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d0d6db;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(124, 124, 124, 0.5);
+}
