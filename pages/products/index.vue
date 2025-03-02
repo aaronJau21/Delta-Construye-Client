@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-100 relative flex justify-center p-4 lg:p-6">
+  <section class="bg-gray-100 relative flex flex-col items-center justify-center p-4 lg:p-6">
     <!-- view Computer -->
     <ViewComputerProduct
       :total_product="total_product"
@@ -15,26 +15,26 @@
       :status="status"
       :getProducts="getProducts"
     />
-<!-- 
+
     <div class="flex items-center justify-center py-5">
       <div class="flex justify-center items-center space-x-4">
         <button
-          class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
+          class="border rounded-md bg-white px-3 py-2 text-2xl text-gray-500 transition hover:bg-gray-300 hover:text-gray-700 cursor-pointer shadow-md"
           @click="bad_page()"
         >
-          <
+          ‹
         </button>
-        <div class="text-slate-500">
+        <div class="text-gray-600 font-semibold text-lg">
           {{ products?.current_page }} / {{ products?.last_page }}
         </div>
         <button
-          class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
+          class="border rounded-md bg-white px-3 py-2 text-2xl text-gray-500 transition hover:bg-gray-300 hover:text-gray-700 cursor-pointer shadow-md"
           @click="current_page()"
         >
-          >
+          ›
         </button>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>
 
@@ -66,8 +66,11 @@ const { data: categories } = useFetch<IGetCategoryResponse[]>(
 const { data: products, status } = useFetch<IGetProducts>(
   () => `${config.public.api_url}/product?page=${page.value}`,
   { watch: [page] }
+  
 );
-const getProducts = computed(() => products.value?.data);
+console.log(products, "productsa");
+
+const getProducts = computed(() => products.value?.data ?? []);
 const total_product = computed(() => products.value?.total);
 </script>
 

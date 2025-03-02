@@ -5,7 +5,7 @@
       class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]"
     >
       <div
-        class="bg-white p-6 rounded-lg shadow-2xl w-[30rem] max-w-full relative z-[10000] flex flex-col gap-4"
+        class="bg-white p-6 rounded-lg shadow-2xl w-[34rem] max-w-full relative z-[10000] flex flex-col gap-4"
       >
         <h2 class="text-xl font-semibold border-b pb-2">Carrito de Compras</h2>
 
