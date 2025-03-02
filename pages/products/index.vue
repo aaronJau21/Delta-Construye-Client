@@ -68,7 +68,6 @@ const { data: products, status } = useFetch<IGetProducts>(
   { watch: [page] }
   
 );
-console.log(products, "productsa");
 
 const getProducts = computed(() => products.value?.data ?? []);
 const total_product = computed(() => products.value?.total);

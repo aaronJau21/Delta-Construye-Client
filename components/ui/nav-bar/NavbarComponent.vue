@@ -1,8 +1,8 @@
 <template>
-  <header class="py-5 bg-white flex flex-col gap-5">
+  <header class="py-1 bg-white flex flex-col gap-5">
 
     <div class="md:flex md:justify-between mx-9 items-center hidden ">
-      <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-40" />
+      <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-64" />
       <div class="flex bg-white border border-gray-400 rounded">
         <input
           placeholder="Buscar Productos"
