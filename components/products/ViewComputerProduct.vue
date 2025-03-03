@@ -1,5 +1,5 @@
 <template>
-  <div class="flex lg:flex lg:container gap-8 hidden">
+  <div class="lg:flex lg:container gap-8 hidden">
     <!-- Categorías -->
     <div
       class="w-[21rem] rounded border border-gray-200 shadow-lg overflow-hidden max-h-screen"
@@ -113,6 +113,5 @@ defineProps<{
 const handleAddClick = (event: any) => {
   event.preventDefault();
   event.stopPropagation();
-  console.log("Producto agregado al carrito (aún no implementado)");
 };
 </script>

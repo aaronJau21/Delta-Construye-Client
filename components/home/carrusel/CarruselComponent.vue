@@ -10,7 +10,7 @@
     :loop="true"
   >
     <swiper-slide>
-      <img src="/img/home/foto1.png" alt="" />
+      <img src="/img/home/foto1.png" alt="" class="w-full"/>
     </swiper-slide>
     <swiper-slide>
       <img src="/img/home/foto2.png" alt="" class="w-full"/>
