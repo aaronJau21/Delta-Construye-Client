@@ -2,7 +2,9 @@
   <header class="py-1 bg-white flex flex-col gap-5">
 
     <div class="md:flex md:justify-between mx-9 items-center hidden ">
-      <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-64" />
+      <NuxtLink to="/">
+        <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-64" />
+      </NuxtLink>
       <div class="flex bg-white border border-gray-400 rounded">
         <input
           placeholder="Buscar Productos"
