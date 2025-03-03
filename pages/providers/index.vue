@@ -32,7 +32,6 @@ const { data: categories } = useFetch<IGetCategoryResponse[]>(
 
 const { data: brands, status } = useFetch<IGetBrands>(
   `${config.public.api_url}/brands/public`,
-  { lazy: true },
   { watch: [page] }
 );
 

@@ -3,7 +3,7 @@
 
     <div class="md:flex md:justify-between mx-9 items-center hidden ">
       <NuxtLink to="/">
-        <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-64" />
+        <img src="/delta-logo.png" alt="Logo de Imperio Ferretero" class="w-32" />
       </NuxtLink>
       <div class="flex bg-white border border-gray-400 rounded">
         <input
