@@ -12,10 +12,10 @@
           :loop="true"
           class="w-full"
         >
-          <swiper-slide v-for="(image, index) in product.images" :key="index">
+          <swiper-slide>
             <img
-              :src="image"
-              alt="Product Image"
+              src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg"
+              :alt="getProduct?.name"
               class="w-full h-64 object-contain"
             />
           </swiper-slide>
@@ -25,13 +25,16 @@
       <div class="md:w-1/2">
         <div class="text-sm p-2">
           Marca:
-          <span class="text-blue-500 font-bold">{{ product.brand }}</span>
+          <NuxtLink :to="`/providers`" class="text-secundary">
+            {{ getProduct?.brands[0].name }}
+          </NuxtLink>
         </div>
-        <h1 class="text-2xl font-bold mb-5">{{ product.title }}</h1>
+        <h1 class="text-2xl font-bold mb-5">{{ getProduct?.name }}</h1>
 
         <div class="mb-5">
           <h3 class="font-medium mb-2">Descripción:</h3>
-          <ul class="list-disc pl-5">
+          {{ getProduct?.description == null ? "" : getProduct?.description }}
+          <!-- <ul class="list-disc pl-5">
             <li
               v-for="(desc, index) in product.description"
               :key="index"
@@ -39,23 +42,16 @@
             >
               {{ desc }}
             </li>
-          </ul>
+          </ul> -->
         </div>
 
-        <div class="flex justify-between p-4">
+        <div class="flex justify-between pb-4">
           <div class="flex flex-col gap-1">
             <span>Variante:</span>
-            <select
-              v-model="selectedVariant"
-              class="p-2 border border-gray-300 rounded-md min-w-[100px]"
-            >
-              <option
-                v-for="variant in product.variants"
-                :key="variant"
-                :value="variant"
-              >
-                {{ variant }}
-              </option>
+            <select class="p-2 border border-gray-300 rounded-md min-w-[100px]">
+              <option>Opción 1</option>
+              <option>Opción 2</option>
+              <option>Opción 3</option>
             </select>
           </div>
 
@@ -63,7 +59,7 @@
             <span>Cantidad:</span>
             <input
               type="number"
-              v-model="quantity"
+              value="1"
               min="1"
               class="p-2 border border-gray-300 rounded-md min-w-[100px]"
             />
@@ -71,7 +67,7 @@
         </div>
 
         <div class="flex">
-          <div class="w-full flex justify-between gap-4 p-2 h-16">
+          <div class="w-full flex justify-between gap-4 h-12">
             <button
               class="bg-blue-600 text-white flex items-center justify-center font-semibold gap-2 px-4 py-2 rounded-lg transition-all hover:bg-blue-700 hover:scale-105 w-full"
             >
@@ -142,13 +138,13 @@
             </div>
             <button
               v-if="newProduct.available"
-              class="w-full py-2 bg-orange-500 text-white rounded-md font-bold"
+              class="w-full py-2 bg-primary text-white rounded-md font-bold"
             >
               COMPRAR
             </button>
             <button
               v-else
-              class="w-full py-2 bg-orange-500 text-white rounded-md font-bold"
+              class="w-full py-2 bg-primary text-white rounded-md font-bold"
             >
               CONSULTAR
             </button>
@@ -159,31 +155,41 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination } from "swiper/modules";
+import type { IGetProductBySku } from "~/interfaces";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const product = ref({
-  brand: "CELSA",
-  title: "Cable Batería (Sgt) 8 AWG - x metro lineal",
-  images: [
-    "/img/home/products/cable_bateria.png",
-    "/img/no-image.png", // Nueva imagen
-    "/img/no-image.png", // Nueva imagen
-  ],
-  description: [
-    "Uso ideal en industrias, edificios públicos, almacenes. Generalmente se instala dentro de tuberías. El aislante de PVC le otorga una adecuada resistencia a los ácidos, grasas, aceites y a la abrasión",
-  ],
-  variants: ["8 AWG"],
-  price: 0,
-});
+// const product = ref({
+//   brand: "CELSA",
+//   title: "Cable Batería (Sgt) 8 AWG - x metro lineal",
+//   images: [
+//     "/img/home/products/cable_bateria.png",
+//     "/img/no-image.png", // Nueva imagen
+//     "/img/no-image.png", // Nueva imagen
+//   ],
+//   description: [
+//     "Uso ideal en industrias, edificios públicos, almacenes. Generalmente se instala dentro de tuberías. El aislante de PVC le otorga una adecuada resistencia a los ácidos, grasas, aceites y a la abrasión",
+//   ],
+//   variants: ["8 AWG"],
+//   price: 0,
+// });
 
-const selectedVariant = ref(product.value.variants[0]);
-const quantity = ref(1);
+// const selectedVariant = ref(product.value.variants[0]);
+// const quantity = ref(1);
+const route = useRoute();
+const config = useRuntimeConfig();
+
+console.log(route.params.sku, "PARAMSS");
+const { data: product } = useFetch<IGetProductBySku>(
+  () => `${config.public.api_url}/product/${route.params.sku}`
+);
+
+const getProduct = computed(() => product.value);
 
 const newProducts = ref([
   {
