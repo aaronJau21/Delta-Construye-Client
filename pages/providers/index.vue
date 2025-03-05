@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-100 relative flex flex-col items-center justify-center p-4 lg:p-6">
+  <section class="bg-gray-100 relative flex flex-col p-4 lg:p-6">
     <!-- View Computer -->
     <ViewComputerProvider
       :categories="categories"
@@ -8,14 +8,14 @@
     />
 
     <!-- View Movil -->
-    <ViewMovilProvider
+    <!-- <ViewMovilProvider
       :categories="categories"
       :status="status"
       :getBrands="getBrands"
-    />
+    /> -->
   </section>
 </template>
-
+ 
 <script setup lang="ts">
 import ViewComputerProvider from "~/components/providers/ViewComputerProvider.vue";
 import ViewMovilProvider from "~/components/providers/ViewMovilProvider.vue";

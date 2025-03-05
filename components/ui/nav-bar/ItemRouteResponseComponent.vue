@@ -1,9 +1,16 @@
 <template>
+  <!-- Overlay oscuro -->
   <div
     v-if="showModal.show"
-    class="h-screen md:hidden transition-all animate-slide-in"
+    class="fixed inset-0 bg-black/50 z-40"
+  ></div>
+
+  <!-- Modal -->
+  <div
+    v-if="showModal.show"
+    class="h-screen md:hidden transition-all animate-slide-in fixed top-0 left-0 bg-white z-50 w-[75%]"
   >
-    <div class="flex justify-between px-5">
+    <div class="flex justify-between px-5 py-3">
       <img src="/logo.jpg" alt="Logo de Imperio Ferretero" class="w-48" />
       <button
         @click="showModal.showModal()"

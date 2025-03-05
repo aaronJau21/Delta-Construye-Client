@@ -250,8 +250,8 @@ const newProducts = ref([
 </script>
 
 <style scoped>
-::v-deep .swiper-button-prev,
-::v-deep .swiper-button-next {
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
   background-color: white;
   color: rgb(43, 41, 41);
   width: 40px;
@@ -267,18 +267,18 @@ const newProducts = ref([
   justify-content: center;
 }
 
-::v-deep .swiper-button-prev:hover,
-::v-deep .swiper-button-next:hover {
+:deep(.swiper-button-prev:hover),
+:deep(.swiper-button-next:hover) {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   transform: translateY(-50%) scale(1.1);
 }
 
-::v-deep .swiper-button-prev {
+:deep(.swiper-button-prev) {
   left: 10px;
 }
 
-::v-deep .swiper-button-next {
+:deep(.swiper-button-next) {
   right: 10px;
 }
 </style>

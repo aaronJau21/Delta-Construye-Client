@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-100 relative flex flex-col items-center justify-center p-4 lg:p-6">
+  <section class="bg-gray-100 relative flex flex-col p-4 lg:p-6">
     <!-- view Computer -->
     <ViewComputerProduct
       :total_product="total_product"
@@ -9,12 +9,12 @@
     />
 
     <!-- View Movil -->
-    <ViewMovilProduct
+    <!-- <ViewMovilProduct
       :total_product="total_product"
       :categories="categories"
       :status="status"
       :getProducts="getProducts"
-    />
+    /> -->
 
     <div class="flex items-center justify-center py-5">
       <div class="flex justify-center items-center space-x-4">
@@ -70,6 +70,7 @@ const { data: products, status } = useFetch<IGetProducts>(
 );
 
 const getProducts = computed(() => products.value?.data ?? []);
+console.log(getProducts, "productos aca");
 const total_product = computed(() => products.value?.total);
 </script>
 

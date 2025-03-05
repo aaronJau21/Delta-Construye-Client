@@ -12,10 +12,15 @@
 
     <!-- Swiper Slider -->
     <Swiper
-      :slides-per-view="3"
       :space-between="15"
       :loop="true"
       :grabCursor="true"
+      :breakpoints="{
+        320: { slidesPerView: 1 },  // Teléfonos
+        640: { slidesPerView: 2 },  // Tablets pequeñas
+        1024: { slidesPerView: 3 }, // Pantallas medianas
+        1280: { slidesPerView: 4 }  // Pantallas grandes
+      }"
       class="mt-5"
     >
       <SwiperSlide v-for="(producto, index) in productos" :key="index">
@@ -44,14 +49,14 @@
 <script setup lang="ts">
 import TitleComponent from "~/components/shared/title/TitleComponent.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css"; // Importar estilos básicos
+import "swiper/css";
 
 const productos = [
   { nombre: "Cemento", img: "/img/home/products/cemento_sol_2.jpg" },
   { nombre: "Ladrillo", img: "/img/home/products/ladrillo.png" },
   { nombre: "Clavos", img: "/img/home/products/clavos.jpg" },
-  { nombre: "Extension", img: "/img/home/products/extension.jpg" },
-  { nombre: "Cable Linterna", img: "/img/home/products/linterna.jpg" },
+  { nombre: "Extensión", img: "/img/home/products/extension.jpg" },
+  { nombre: "Cable Linterna", img: "/img/home/products/linterna.jpg" }
 ];
 </script>
 
