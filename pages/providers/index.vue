@@ -15,7 +15,7 @@
     /> -->
   </section>
 </template>
- 
+
 <script setup lang="ts">
 import ViewComputerProvider from "~/components/providers/ViewComputerProvider.vue";
 import ViewMovilProvider from "~/components/providers/ViewMovilProvider.vue";
