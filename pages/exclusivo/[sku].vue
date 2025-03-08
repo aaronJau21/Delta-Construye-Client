@@ -163,24 +163,6 @@ import type { IGetProductBySku } from "~/interfaces";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-// const product = ref({
-//   brand: "CELSA",
-//   title: "Cable Batería (Sgt) 8 AWG - x metro lineal",
-//   images: [
-//     "/img/home/products/cable_bateria.png",
-//     "/img/no-image.png", // Nueva imagen
-//     "/img/no-image.png", // Nueva imagen
-//   ],
-//   description: [
-//     "Uso ideal en industrias, edificios públicos, almacenes. Generalmente se instala dentro de tuberías. El aislante de PVC le otorga una adecuada resistencia a los ácidos, grasas, aceites y a la abrasión",
-//   ],
-//   variants: ["8 AWG"],
-//   price: 0,
-// });
-
-// const selectedVariant = ref(product.value.variants[0]);
-// const quantity = ref(1);
 const route = useRoute();
 const config = useRuntimeConfig();
 

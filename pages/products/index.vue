@@ -1,77 +1,63 @@
 <template>
-  <section class="bg-gray-100 relative flex flex-col p-4 lg:p-6">
-    <!-- view Computer -->
-    <ViewComputerProduct
-      :total_product="total_product"
-      :categories="categories"
-      :status="status"
-      :getProducts="getProducts"
-    />
-
-    <!-- View Movil -->
-    <!-- <ViewMovilProduct
-      :total_product="total_product"
-      :categories="categories"
-      :status="status"
-      :getProducts="getProducts"
-    /> -->
-
-    <div class="flex items-center justify-center py-5">
-      <div class="flex justify-center items-center space-x-4">
-        <button
-          class="border rounded-md bg-white px-3 py-2 text-2xl text-gray-500 transition hover:bg-gray-300 hover:text-gray-700 cursor-pointer shadow-md"
-          @click="bad_page()"
+  <section>
+    <div v-if="status == 'pending'">
+      <LoadingComponent />
+    </div>
+    <div class="grid grid-cols-5 gap-5 p-4" v-else>
+      <NuxtLink
+        v-for="product in getProducts"
+        :key="product.id"
+        class="bg-white rounded-md shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
+        :to="`/products/${product.id}`"
+      >
+        <div
+          class="h-40 flex justify-center items-center border-b border-gray-300 bg-white"
         >
-          ‹
-        </button>
-        <div class="text-gray-600 font-semibold text-lg">
-          {{ products?.current_page }} / {{ products?.last_page }}
+          <img
+            v-if="product.product_images?.[0]?.image"
+            :src="product.product_images[0].image"
+            :alt="product.name"
+            class="w-28 h-28 object-contain"
+          />
+          <div
+            v-else
+            class="w-28 h-28 flex justify-center items-center text-gray-500"
+          >
+            Imagen no disponible
+          </div>
         </div>
-        <button
-          class="border rounded-md bg-white px-3 py-2 text-2xl text-gray-500 transition hover:bg-gray-300 hover:text-gray-700 cursor-pointer shadow-md"
-          @click="current_page()"
-        >
-          ›
-        </button>
-      </div>
+        <div class="mb-5">
+          <h3 class="text-xl text-center my-5">
+            {{ product.name }}
+          </h3>
+          <h4 class="text-lg text-center my-5">
+            {{ product.price }}
+          </h4>
+          <div class="flex justify-center items-center">
+            <button
+              class="flex items-center text-blue-500 gap-x-2 hover:text-gray-400 hover:scale-105 transition-transform duration-300"
+            >
+              <Icon name="ep:circle-plus-filled" class="" />
+              Agregar
+            </button>
+          </div>
+        </div>
+      </NuxtLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import ViewComputerProduct from "~/components/products/ViewComputerProduct.vue";
-import ViewMovilProduct from "~/components/products/ViewMovilProduct.vue";
-import type { IGetCategoryResponse, IGetProducts } from "~/interfaces";
+import LoadingComponent from "~/components/ui/loading/LoadingComponent.vue";
+import type { IGetProductsNoPrice } from "~/interfaces";
 
 const config = useRuntimeConfig();
-
-const page = ref<number>(1);
-
-const current_page = () => {
-  if (page.value < products.value?.last_page!) {
-    page.value = page.value + 1;
-  }
-};
-
-const bad_page = () => {
-  if (page.value > 0) {
-    page.value = page.value - 1;
-  }
-};
-
-const { data: categories } = useFetch<IGetCategoryResponse[]>(
-  `${config.public.api_url}/category`
+const { data: products, status } = useFetch<IGetProductsNoPrice>(
+  `${config.public.api_url}/product/get/no-price`,
+  { lazy: true }
 );
 
-const { data: products, status } = useFetch<IGetProducts>(
-  () => `${config.public.api_url}/product?page=${page.value}`,
-  { watch: [page] }
-  
-);
-
-const getProducts = computed(() => products.value?.data ?? []);
-console.log(getProducts, "productos aca");
-const total_product = computed(() => products.value?.total);
+const getProducts = computed(() => products.value?.data);
 </script>
 
 <style scoped></style>
