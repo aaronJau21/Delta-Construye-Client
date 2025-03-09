@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   modules: ["@nuxt/icon", "@pinia/nuxt"],
+
+  build: {
+    transpile: ["vuetify"], // 🚀 Agrega Vuetify aquí
+  },
+  
   postcss: {
     plugins: {
       tailwindcss: {},
