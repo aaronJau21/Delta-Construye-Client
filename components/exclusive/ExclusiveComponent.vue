@@ -27,7 +27,7 @@
           >
             <img
               src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg"
-              :alt="getProduct?.name"
+              :alt="product.name"
               class="max-w-full max-h-full object-contain"
             />
           </div>
@@ -47,7 +47,7 @@
           <!-- Botón Agregar -->
           <div class="p-2">
             <button
-              @click="handleAddClick"
+              @click.stop="handleAddClick"
               class="bg-blue-600 text-white flex items-center justify-center font-semibold gap-2 px-4 py-2 rounded-lg transition-all hover:bg-blue-700 hover:scale-105 w-full"
             >
               <Icon name="ep:circle-plus-filled" class="text-xl" />
@@ -62,12 +62,17 @@
 
 <script setup lang="ts">
 import LoadingComponent from "~/components/ui/loading/LoadingComponent.vue";
-import type { IDatum, IGetProductsNoPrice } from "~/interfaces";
+import type { Datum } from "~/interfaces";
 
 defineProps<{
-  status: IDatum;
-  getProducts: IGetProductsNoPrice[];
+  status: any;
+  getProducts: Datum[];
 }>();
+
+const handleAddClick = (event: Event) => {
+  event.stopPropagation();
+  console.log("Producto agregado al carrito o lista de selección");
+};
 </script>
 
 <style scoped></style>

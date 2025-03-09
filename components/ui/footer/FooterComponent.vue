@@ -11,10 +11,17 @@
         </div>
 
         <!-- Servicio al Cliente -->
-        <div>
+        <div class="flex flex-col gap-2">
           <h3 class="font-bold text-2xl mb-4">Servicio al Cliente</h3>
-          <p class="text-gray-600 hover:text-red-600 cursor-pointer">Políticas de privacidad</p>
-          <p class="text-gray-600 hover:text-red-600 cursor-pointer">Términos y Condiciones</p>
+          <NuxtLink to="/privacy-policy" class="text-gray-600 hover:text-red-600 cursor-pointer block border-none">
+            Política de Privacidad
+          </NuxtLink>
+          <NuxtLink to="/terms-and-conditions" class="text-gray-600 hover:text-red-600 cursor-pointer block">
+            Terminos y Condiciones
+          </NuxtLink>
+          <NuxtLink to="/complaints-book" class="text-gray-600 hover:text-red-600 cursor-pointer block border-none">
+            Libro de Reclamaciones
+          </NuxtLink>
         </div>
 
         <!-- Contacto -->

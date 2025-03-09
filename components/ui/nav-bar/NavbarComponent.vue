@@ -1,10 +1,7 @@
 <template>
   <header class="p-2 bg-white flex flex-col gap-5 relative">
     <!-- Dropdown Search Results -->
-    <div
-      v-if="showDropdown"
-      class="absolute top-16 left-0 bg-white w-[85%] z-10"
-    >
+    <div class="absolute bg-white w-[85%] z-10">
       <ItemRouteResponseComponent />
     </div>
 
