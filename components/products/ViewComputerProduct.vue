@@ -122,7 +122,7 @@
             v-for="product in getProducts"
             :key="product.id"
             class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-2 h-[320px] flex flex-col justify-between"
-            :to="`/products/${product.sku}`"
+            :to="`/exclusivo/${product.id}`"
           >
             <!-- Imagen del producto -->
             <div

@@ -1,8 +1,41 @@
+<script setup lang="ts">
+import ButtonHome from "~/components/shared/button-home/ButtonHome.vue";
+import { useLoginStore } from "~/store/auth/login.store";
+const router = useRouter();
+
+const email = ref<string>("");
+const password = ref<string>("");
+const loginStore = useLoginStore();
+const errorMessage = ref<string | null>(null); // Para mostrar errores al usuario
+
+const handleLogin = async () => {
+  try {
+    await loginStore.login(email.value, password.value);
+
+    // Solo redirigimos si el login fue exitoso (token existe)
+    if (loginStore.token) {
+      return router.push("/");
+    } else {
+      throw new Error("No se recibió un token válido");
+    }
+  } catch (error) {
+    console.error("Error en handleLogin:", error);
+    errorMessage.value = "Credenciales incorrectas o error en el servidor"; // Mensaje para el usuario
+    // No redirigimos a /auth/login, simplemente mostramos el error
+  }
+};
+</script>
+
 <template>
   <form @submit.prevent="handleLogin()" class="bg-white">
     <ButtonHome />
     <h1 class="text-gray-800 font-bold text-2xl mb-1">Hola Denuevo</h1>
     <p class="text-sm font-normal text-gray-600 mb-7">Bienvenido Denuevo</p>
+
+    <!-- Mostrar mensaje de error si existe -->
+    <div v-if="errorMessage" class="text-red-500 text-sm mb-4">
+      {{ errorMessage }}
+    </div>
 
     <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
       <svg
@@ -54,35 +87,14 @@
     </button>
     <div class="flex justify-between">
       <NuxtLink to="/" class="text-sm ml-2 hover:text-blue-500 cursor-pointer">
-        Se te olvido tu password?
+        ¿Se te olvidó tu contraseña?
       </NuxtLink>
       <NuxtLink
         to="/auth/register"
         class="text-sm ml-2 hover:text-blue-500 cursor-pointer"
       >
-        No tienes un usuario?
+        ¿No tienes un usuario?
       </NuxtLink>
     </div>
   </form>
 </template>
-
-<script setup lang="ts">
-import ButtonHome from '~/components/shared/button-home/ButtonHome.vue';
-import { useLoginStore } from "~/store/auth/login.store";
-const router = useRouter();
-
-const email = ref<string>("");
-const password = ref<string>("");
-const loginStore = useLoginStore();
-
-const handleLogin = async () => {
-  try {
-    await loginStore.login(email.value, password.value);
-    router.push("/");
-  } catch (error) {
-    console.log(error);
-  }
-};
-</script>
-
-<style scoped></style>
