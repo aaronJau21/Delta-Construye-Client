@@ -3,7 +3,7 @@
   <div
     class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center"
   >
-    <div class="card w-96 mx-auto bg-white shadow-xl hover:shadow">
+    <form class="card w-96 mx-auto bg-white shadow-xl hover:shadow">
       <label for="imageInput">
         <img
           class="w-32 mx-auto rounded-full -mt-20 border-8 border-white cursor-pointer"
@@ -39,7 +39,9 @@
           <span class="font-bold">2.0 k</span> Following
         </div>
       </div>
-    </div>
+
+      <button class="bg-green-500 px-3 py-1 m-3 rounded-lg">Guardar</button>
+    </form>
   </div>
 </template>
 
@@ -50,7 +52,6 @@ definePageMeta({
 });
 
 import { ref } from "vue";
-import type { IUser } from "~/interfaces";
 import { useUserStore } from "~/store/user/user.store";
 
 const imageSrc = ref("https://avatars.githubusercontent.com/u/67946056?v=4");
