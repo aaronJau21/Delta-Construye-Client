@@ -11,9 +11,25 @@ export const useUserStore = defineStore("userStore", () => {
     const { data } = await useFetch<IUser>(
       `${config.public.api_url}/client/getClient/${userCookie.value.name}`
     );
-
     user.value = data.value!;
     return user.value;
+  };
+
+  const updateUser = async (userData: Partial<IUser>): Promise<IUser> => {
+    const { data } = await useFetch<IUser>(
+      `${config.public.api_url}/client/update/${user.value?.name}`,
+      {
+        method: "PUT",
+        body: userData,
+      }
+    );
+
+    if (data.value) {
+      user.value = data.value;
+      userCookie.value = data.value;
+    }
+
+    return user.value!;
   };
 
   // Execute getUser immediately when the store is initialized
@@ -22,5 +38,6 @@ export const useUserStore = defineStore("userStore", () => {
   return {
     user,
     getUser,
+    updateUser,
   };
 });

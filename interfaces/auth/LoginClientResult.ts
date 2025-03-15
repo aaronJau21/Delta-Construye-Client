@@ -8,8 +8,8 @@ export interface IUser {
   id: number;
   name: string;
   email: string;
-  status: boolean;
+  status?: boolean;
   phone: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
