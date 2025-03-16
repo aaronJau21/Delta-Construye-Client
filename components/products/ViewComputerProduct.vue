@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col gap-8">
-    <!-- Buscador y Botón de Filtro -->
     <div class="block md:hidden flex-col gap-4">
       <div class="flex gap-6">
         <input
@@ -18,13 +17,11 @@
       </div>
     </div>
 
-    <!-- Modal de Filtros -->
     <div
       v-if="isFilterOpen"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
     >
       <div class="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-md">
-        <!-- Botón de cierre (X roja) -->
         <div>
           <div class="flex flex-col items-end">
             <div
@@ -57,7 +54,6 @@
       </div>
     </div>
 
-    <!-- Contenedor de Categorías y Marcas -->
     <div class="flex gap-8">
       <div
         class="w-[21rem] h-full rounded border border-gray-200 shadow-lg flex-none overflow-hidden hidden md:block"
@@ -66,7 +62,6 @@
           Categorías
         </div>
 
-        <!-- Mostrar categorías si ya cargaron -->
         <ul
           class="bg-white h-full p-4 min-h-[300px]"
           v-if="status !== 'pending'"
@@ -91,7 +86,6 @@
           </li>
         </ul>
 
-        <!-- Skeleton de categorías -->
         <div v-else class="p-4 min-h-[300px] flex flex-col gap-3">
           <v-skeleton-loader
             v-for="n in 6"
@@ -102,12 +96,10 @@
         </div>
       </div>
 
-      <!-- Productos -->
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 w-full"
       >
         <template v-if="status === 'pending'">
-          <!-- Skeletons dinámicos según la cantidad de productos -->
           <v-skeleton-loader
             v-for="n in getProducts.length || 8"
             :key="n"
@@ -117,14 +109,12 @@
         </template>
 
         <template v-else>
-          <!-- Mostrar los productos reales -->
           <NuxtLink
             v-for="product in getProducts"
             :key="product.id"
             class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-2 h-[320px] flex flex-col justify-between"
             :to="`/exclusivo/${product.id}`"
           >
-            <!-- Imagen del producto -->
             <div
               class="h-40 flex justify-center items-center border-b border-gray-300 bg-white"
             >
@@ -142,7 +132,6 @@
               </div>
             </div>
 
-            <!-- Información del producto -->
             <div
               class="flex flex-col items-center text-center p-3 gap-1 flex-grow"
             >
@@ -154,7 +143,6 @@
               </span>
             </div>
 
-            <!-- Botón Agregar -->
             <div class="p-2">
               <button
                 @click="handleAddClick"

@@ -1,19 +1,16 @@
 <template>
   <swiper
-    :navigation="true"
     :modules="[Navigation, Autoplay]"
-    class="mySwiper"
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
+    :autoplay="{ delay: 2500, disableOnInteraction: false }"
     :loop="true"
+    :navigation="true"
+    class="w-full h-auto"
   >
-    <swiper-slide>
-      <img src="/img/home/foto1.png" alt="" class="w-full" />
+    <swiper-slide class="flex justify-center items-center">
+      <img :src="currentImages[0]" alt="Slide 1" class="w-full h-auto object-contain" />
     </swiper-slide>
-    <swiper-slide>
-      <img src="/img/home/foto2.png" alt="" class="w-full" />
+    <swiper-slide class="flex justify-center items-center">
+      <img :src="currentImages[1]" alt="Slide 2" class="w-full h-auto object-contain" />
     </swiper-slide>
   </swiper>
 </template>
@@ -21,10 +18,42 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Autoplay } from "swiper/modules";
+import { ref, onMounted, onUnmounted, watchEffect } from "vue";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/thumbs";
+
+// Definir imágenes
+const imagesDesktop = ["/img/home/carrusel/foto1.png", "/img/home/carrusel/foto2.png"];
+const imagesMobile = ["/img/home/carrusel/carrusel-koplast.png", "/img/home/carrusel/carrusel-lark.png"];
+
+// Evitar error de SSR con `window.innerWidth`
+const screenWidth = ref<number | null>(null);
+const currentImages = ref(imagesDesktop);
+
+// Función para actualizar el tamaño de la pantalla
+const updateScreenWidth = () => {
+  if (process.client) {
+    screenWidth.value = window.innerWidth;
+  }
+};
+
+onMounted(() => {
+  updateScreenWidth();
+  window.addEventListener("resize", updateScreenWidth);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateScreenWidth);
+});
+
+// Cambiar imágenes en función del tamaño de la pantalla
+watchEffect(() => {
+  if (screenWidth.value !== null) {
+    currentImages.value = screenWidth.value < 768 ? imagesMobile : imagesDesktop;
+  }
+});
 </script>
 
 <style scoped>

@@ -1,12 +1,12 @@
 <template>
-  <div class="md:container mx-5 md:mx-auto my-16">
-    <div class="flex justify-between pr-9">
+  <div class="container p-2">
+    <div class="flex justify-between items-center">
       <TitleComponent title="Productos" />
       <NuxtLink
-        to="/products"
-        class="bg-white mb-5 px-3 py-1 rounded-md font-bold hover:bg-primary hover:text-white transition-all"
+        to="/providers"
+        class="bg-white mb-5 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
       >
-        Ver todos
+        Ver más
       </NuxtLink>
     </div>
 
@@ -21,10 +21,9 @@
         1024: { slidesPerView: 3 }, // Pantallas medianas
         1280: { slidesPerView: 4 }  // Pantallas grandes
       }"
-      class="mt-5"
     >
       <SwiperSlide v-for="(producto, index) in productos" :key="index">
-        <div class="bg-white rounded-lg shadow-md overflow-hidden p-4 flex flex-col">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden p-4 flex flex-col m-1">
           <img
             :src="producto.img"
             alt="Imagen del producto"

@@ -1,40 +1,41 @@
 <template>
-  <div class="container mx-auto my-16">
-    <div class="flex justify-between items-center pr-9">
+  <div class="container p-2">
+    <div class="flex justify-between items-center">
       <TitleComponent title="Marcas" />
       <NuxtLink
         to="/providers"
-        class="bg-white mb-5 px-4 py-2 rounded-lg font-bold shadow-md
-          hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
+        class="bg-white mb-5 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
       >
         Ver más
       </NuxtLink>
     </div>
 
     <Swiper
-      :spaceBetween="15"
       :loop="true"
       :autoplay="{ delay: 0, disableOnInteraction: false }"
       :speed="2500"
       :modules="[Autoplay]"
+      :slidesPerView="1"
+      :spaceBetween="10"
       :breakpoints="{
-        320: { slidesPerView: 1 },  // Móviles pequeños
-        640: { slidesPerView: 2 },  // Tablets pequeñas
-        1024: { slidesPerView: 3 }, // Laptops y pantallas medianas
-        1280: { slidesPerView: 4 }  // Pantallas grandes
+        640: { slidesPerView: 2, spaceBetween: 10 },
+        1024: { slidesPerView: 3, spaceBetween: 10 },
+        1280: { slidesPerView: 4, spaceBetween: 10 },
       }"
-      class="mySwiper"
+      class="swiper-container"
     >
-      <SwiperSlide v-for="(brand, index) in brands" :key="index">
+      <SwiperSlide
+        v-for="(brand, index) in brands"
+        :key="index"
+        class="flex justify-center items-center"
+      >
         <div
-          class="group w-full h-[130px] flex justify-center items-center rounded-xl p-4
-          bg-gradient-to-r from-gray-50 to-gray-100 shadow-md shadow-gray-300/40
-          hover:shadow-lg hover:scale-105 transition-all duration-300"
+          class="w-full h-[100px] md:h-[120px] lg:h-[130px] flex justify-center items-center rounded-lg bg-gray-100 shadow-md p-2 m-1"
         >
           <img
             :src="brand.image"
             alt="brand"
-            class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            class="max-w-[80%] max-h-[80%] object-contain"
           />
         </div>
       </SwiperSlide>
@@ -56,15 +57,10 @@ const brands = [
   { image: "/img/home/seed/trebol.png" },
   { image: "/img/home/seed/celsa.png" },
   { image: "/img/home/seed/tuboplast.png" },
-  { image: "/img/home/seed/cemento_apu.png" }
+  { image: "/img/home/seed/cemento_apu.png" },
 ];
 </script>
 
 <style scoped>
 /* Ajuste global si necesitas más separación en dispositivos grandes */
-@media (min-width: 1024px) {
-  .mySwiper {
-    padding: 0 20px;
-  }
-}
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div class="md:container mx-5 md:mx-auto my-16">
-    <TitleComponent title="Categorías" />
-
+  <div class="container py-2 flex flex-col gap-6 p-2">
+    <div class="flex justify-between items-center">
+      <TitleComponent title="Categorías" />
+    </div>
     <swiper
       :navigation="true"
       :slidesPerView="1"
@@ -13,11 +14,11 @@
         640: { slidesPerView: 2, spaceBetween: 20 },
         1024: { slidesPerView: 3, spaceBetween: 30 },
       }"
-      class="mySwiper mt-9"
+      class="w-full"
     >
       <swiper-slide v-for="(item, index) in categories" :key="index">
         <div
-          class="bg-white rounded-lg shadow-md overflow-hidden p-4 flex flex-col items-center"
+          class="bg-white rounded-lg shadow-md overflow-hidden p-4 flex flex-col items-center m-1"
         >
           <img :src="item.img" alt="" class="w-full h-48 object-contain mb-4" />
           <div class="border-t border-gray-300 my-4 w-full"></div>

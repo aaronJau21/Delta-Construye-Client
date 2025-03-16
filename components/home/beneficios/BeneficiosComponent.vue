@@ -1,16 +1,17 @@
 <template>
-  <div class="md:container mx-5 md:mx-auto mt-28 mb-16">
-    <TitleComponent title="Beneficios para constructoras" />
+  <div class="container flex flex-col gap-6 p-2">
+    <div class="flex justify-between items-center">
+      <TitleComponent title="Beneficios para constructoras" />
+    </div>
 
     <!-- 🌟 Slider solo si no caben 4 tarjetas -->
-    <div v-if="useSlider" class="mt-9">
+    <div v-if="useSlider" >
       <Swiper
         :slidesPerView="slidesPerView"
         :spaceBetween="15"
         :loop="true"
         :autoplay="{ delay: 3000, disableOnInteraction: false }"
         :modules="[Autoplay]"
-        class="mySwiper"
       >
         <swiper-slide
           v-for="(benefit, index) in benefits"
@@ -18,7 +19,7 @@
           class="flex justify-center"
         >
           <div
-            class="flex w-full min-h-[160px] bg-white rounded-xl overflow-hidden shadow-lg transform transition-all hover:scale-105 hover:shadow-xl"
+            class="flex w-full min-h-[160px] bg-white rounded-xl overflow-hidden shadow-lg transform transition-all hover:scale-105 hover:shadow-xl m-1"
           >
             <div
               class="w-24 flex justify-center items-center rounded-l-xl"
@@ -36,7 +37,7 @@
     </div>
 
     <!-- Tarjetas normales -->
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-9 gap-6">
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <div
         v-for="(benefit, index) in benefits"
         :key="index"

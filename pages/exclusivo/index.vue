@@ -1,11 +1,14 @@
 <template>
   <section class="bg-gray-100 relative flex flex-col p-4 lg:p-6 mb-16">
-    <ExclusiveComponent :status="status" :getProducts="getProducts" />
+    <ExclusiveComponent
+      :status="status"
+      :getProducts="getProducts"
+      :categories="categories"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
-
 import ExclusiveComponent from "~/components/exclusive/ExclusiveComponent.vue";
 import type { IGetProductsNoPrice } from "~/interfaces";
 import ViewComputerProduct from "~/components/products/ViewComputerProduct.vue";
@@ -41,7 +44,7 @@ const { data: products, status } = useFetch<IGetProducts>(
 );
 
 const getProducts = computed(() => products.value?.data ?? []);
-console.log(getProducts, "productos aca");
+console.log(getProducts, "productos");
 const total_product = computed(() => products.value?.total);
 </script>
 

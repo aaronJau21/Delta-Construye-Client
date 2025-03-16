@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8">
+  <section class="flex flex-col gap-8">
     <!-- Buscador y Botón de Filtro -->
     <div class="block md:hidden flex-col gap-4">
       <div class="flex gap-6">
@@ -153,7 +153,7 @@
         </template>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
