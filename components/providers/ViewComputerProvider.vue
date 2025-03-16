@@ -44,7 +44,12 @@
             :key="category.id"
             class="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md"
           >
-            <input type="checkbox" class="w-4 h-4" :value="category.id" />
+            <input
+              type="checkbox"
+              class="w-4 h-4"
+              :value="category.id"
+              @change="sendCategoryId(category.id)"
+            />
             <span class="text-gray-800">{{ category.name }}</span>
           </li>
         </ul>
@@ -57,7 +62,7 @@
       </div>
     </div>
 
-    <!-- Contenedor de Categorías y Marcas -->
+    <!-- Contenedor de Categorías y Marc`as -->
     <div class="flex gap-8">
       <div
         class="w-[21rem] h-full rounded border border-gray-200 shadow-lg flex-none overflow-hidden hidden md:block"
@@ -78,6 +83,9 @@
               <input
                 type="checkbox"
                 class="w-4 h-4 accent-gray-600 cursor-pointer flex-shrink-0"
+                :value="category.id"
+                :checked="selectedCategoryId === category.id"
+                @change="handleCategoryChange($event, category.id)"
               />
               <p class="text-gray-800 font-medium text-sm">
                 {{ category.name }}
@@ -166,5 +174,21 @@ defineProps<{
   categories: IGetCategoryResponse[] | null;
   status: AsyncDataRequestStatus;
   getBrands: BrandElement[];
+  selectedCategoryId: number;
 }>();
+
+const emit = defineEmits(["categorySelected"]);
+
+const sendCategoryId = (categoryId: number) => {
+  emit("categorySelected", categoryId);
+};
+
+const handleCategoryChange = (event: Event, categoryId: number) => {
+  const isChecked = (event.target as HTMLInputElement).checked;
+  if (isChecked) {
+    emit("categorySelected", categoryId);
+  } else {
+    emit("categorySelected", 0); // Reset to 0 when unchecked
+  }
+};
 </script>
