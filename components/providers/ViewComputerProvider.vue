@@ -44,7 +44,7 @@
             :key="category.id"
             class="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md"
           >
-            <input type="checkbox" class="w-4 h-4" />
+            <input type="checkbox" class="w-4 h-4" :value="category.id" />
             <span class="text-gray-800">{{ category.name }}</span>
           </li>
         </ul>
@@ -98,7 +98,6 @@
             class="h-10"
           />
         </div>
-
       </div>
 
       <!-- Marcas -->
@@ -117,21 +116,21 @@
           <div
             v-for="brand in getBrands"
             :key="brand.id"
-            class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-1"
+            class="bg-white border h-72 border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-1"
           >
             <div
               class="h-52 border-b border-gray-300 flex justify-center items-center bg-white"
             >
               <img
-                :src="brand.logo"
-                :alt="brand.name"
+                :src="brand.brand.logo"
+                :alt="brand.brand.name"
                 class="w-40 h-40 object-contain"
               />
             </div>
             <div
               class="flex justify-between items-center text-lg font-semibold text-gray-700 text-center p-4"
             >
-              <span class="text-left">{{ brand.name }}</span>
+              <span class="text-left">{{ brand.brand.name }}</span>
               <span class="text-gray-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -159,13 +158,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { AsyncDataRequestStatus } from "#app";
-import type { IData, IGetCategoryResponse } from "~/interfaces";
+import type { BrandElement, IGetCategoryResponse } from "~/interfaces";
 
 const isFilterOpen = ref(false);
 
 defineProps<{
   categories: IGetCategoryResponse[] | null;
   status: AsyncDataRequestStatus;
-  getBrands: IData[];
+  getBrands: BrandElement[];
 }>();
 </script>

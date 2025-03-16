@@ -1,12 +1,27 @@
 export interface IGetBrands {
-  brands: IData[];
+  brands: BrandElement[];
 }
 
-export interface IData {
+export interface BrandElement {
+  id:          number;
+  brand_id:    number;
+  category_id: number;
+  created_at:  Date;
+  updated_at:  Date;
+  brand:       BrandBrand;
+  category:    Category;
+}
+
+export interface BrandBrand {
+  id:     number;
+  name:   string;
+  logo:   string;
+  status: boolean;
+}
+
+export interface Category {
   id:         number;
   name:       string;
-  logo:       string;
-  status:     boolean;
   created_at: Date;
   updated_at: Date;
 }

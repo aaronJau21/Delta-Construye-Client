@@ -14,16 +14,17 @@ import ViewComputerProvider from "~/components/providers/ViewComputerProvider.vu
 
 import type { IGetBrands, IGetCategoryResponse } from "~/interfaces";
 
-const config = useRuntimeConfig();
-
 const page = ref<number>(1);
+const category_id = ref<number>(0);
 
 const { data: categories } = useFetch<IGetCategoryResponse[]>(`/api/category`);
 
-const { data: brands, status } = useFetch<IGetBrands>(`/api/brands`, {
-  watch: [page],
-});
-
+const { data: brands, status } = useFetch<IGetBrands>(
+  `/api/brands?param=${category_id.value}`,
+  {
+    watch: [page],
+  }
+);
 const getBrands = computed(() => brands.value?.brands ?? []);
 </script>
 
