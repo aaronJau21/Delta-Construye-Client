@@ -94,7 +94,6 @@ const showDropdown = ref(false);
 const showModalSearch = ref(false);
 
 const handleSearch = () => {
-  console.log("Buscando:", searchQuery.value);
   // Lógica de búsqueda aquí
   showDropdown.value = true; // Mostrar dropdown si hay resultados
 };

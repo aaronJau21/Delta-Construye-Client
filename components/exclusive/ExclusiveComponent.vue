@@ -175,7 +175,6 @@ const isFilterOpen = ref(false);
 
 const handleAddClick = (event: Event) => {
   event.stopPropagation();
-  console.log("Producto agregado al carrito o lista de selección");
 };
 </script>
 

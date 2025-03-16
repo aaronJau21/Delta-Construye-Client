@@ -166,7 +166,6 @@ import "swiper/css/pagination";
 const route = useRoute();
 const config = useRuntimeConfig();
 
-console.log(route.params.sku, "PARAMSS");
 const { data: product } = useFetch<IGetProductBySku>(
   () => `${config.public.api_url}/product/${route.params.sku}`
 );

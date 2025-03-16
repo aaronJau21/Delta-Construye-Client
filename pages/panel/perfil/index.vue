@@ -78,7 +78,6 @@ const handleImageChange = (event: any) => {
   const file = event.target.files[0];
   if (file) {
     imageSrc.value = URL.createObjectURL(file);
-    console.log("Selected file:", file);
   }
 };
 
