@@ -13,8 +13,9 @@
           class="w-full"
         >
           <swiper-slide>
+            <!-- src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg" -->
             <img
-              src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg"
+              :src="getProduct?.product_images[0].image"
               :alt="getProduct?.name"
               class="w-full h-64 object-contain"
             />

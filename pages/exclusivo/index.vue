@@ -47,14 +47,10 @@ const bad_page = () => {
   }
 };
 
-const { data: categories } = useFetch<IGetCategoryResponse[]>(
-  `${config.public.api_url}/category`
-);
-
-// const getProducts = computed(() => products.value?.data);
+const { data: categories } = useFetch<IGetCategoryResponse[]>(`/api/category`);
 
 const { data: products, status } = useFetch<IGetProducts>(
-  () => `${config.public.api_url}/product?page=${page.value}`,
+  () => `/api/products?page=${page.value}`,
   { watch: [page] }
 );
 

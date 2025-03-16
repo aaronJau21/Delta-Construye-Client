@@ -9,6 +9,7 @@ export interface IGetProductBySku {
   porcentage_discount: number;
   categories: Category[];
   brands: Brand[];
+  product_images: ProductImage[];
 }
 
 export interface Brand {
@@ -27,4 +28,9 @@ export interface Category {
   created_at: Date;
   updated_at: Date;
   laravel_through_key: number;
+}
+
+export interface ProductImage {
+  id: number;
+  image: string;
 }

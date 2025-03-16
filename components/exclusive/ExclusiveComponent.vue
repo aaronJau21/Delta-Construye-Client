@@ -1,6 +1,5 @@
 <template>
-  <section class="flex flex-col gap-8">
-    <!-- Buscador y Botón de Filtro -->
+  <div class="flex flex-col gap-8">
     <div class="block md:hidden flex-col gap-4">
       <div class="flex gap-6">
         <input
@@ -18,13 +17,11 @@
       </div>
     </div>
 
-    <!-- Modal de Filtros -->
     <div
       v-if="isFilterOpen"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
     >
       <div class="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-md">
-        <!-- Botón de cierre (X roja) -->
         <div>
           <div class="flex flex-col items-end">
             <div
@@ -64,14 +61,15 @@
         <div class="bg-gray-400 p-4 text-white text-lg font-semibold">
           Categorías
         </div>
+
         <ul
           class="bg-white h-full p-4 min-h-[300px]"
           v-if="status !== 'pending'"
         >
           <li
+            class="flex justify-between items-center p-3 rounded-md hover:bg-gray-200 transition gap-2"
             v-for="category in categories"
             :key="category.id"
-            class="flex justify-between items-center p-3 rounded-md hover:bg-gray-200 transition gap-2"
           >
             <div class="flex items-center gap-3">
               <input
@@ -88,7 +86,6 @@
           </li>
         </ul>
 
-        <!-- Skeleton de categorías -->
         <div v-else class="p-4 min-h-[300px] flex flex-col gap-3">
           <v-skeleton-loader
             v-for="n in 6"
@@ -98,13 +95,11 @@
           />
         </div>
       </div>
-      
-      <!-- Marcas -->
+
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 w-full"
       >
         <template v-if="status === 'pending'">
-          <!-- Skeletons dinámicos según la cantidad de productos -->
           <v-skeleton-loader
             v-for="n in getProducts.length || 8"
             :key="n"
@@ -114,40 +109,43 @@
         </template>
 
         <template v-else>
-          <!-- Mostrar los productos reales -->
           <NuxtLink
             v-for="product in getProducts"
             :key="product.id"
             class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-2 h-[320px] flex flex-col justify-between"
-            :to="`/products/${encodeURIComponent(product.sku)}`"
-            >
-            <!-- Contenedor de la imagen -->
+            :to="`/exclusivo/${product.id}`"
+          >
             <div
-              class="h-40 flex justify-center items-center border-b border-gray-300 bg-white overflow-hidden"
+              class="h-40 flex justify-center items-center border-b border-gray-300 bg-white"
             >
               <img
-                src="https://peruconstruye.net/wp-content/uploads/2024/02/4-12.jpg"
+                v-if="product.product_images?.[0]?.image"
+                :src="product.product_images[0].image"
                 :alt="product.name"
-                class="max-w-full max-h-full object-contain"
+                class="w-28 h-28 object-contain"
               />
+              <div
+                v-else
+                class="w-28 h-28 flex justify-center items-center text-gray-500"
+              >
+                Imagen no disponible
+              </div>
             </div>
 
-            <!-- Información del producto -->
             <div
               class="flex flex-col items-center text-center p-3 gap-1 flex-grow"
             >
               <span class="text-sm font-medium text-gray-700 leading-tight">
-                {{ product?.name }}
+                {{ product.name }}
               </span>
               <span class="text-base text-gray-500 font-semibold">
                 {{ product.price }}
               </span>
             </div>
 
-            <!-- Botón Agregar -->
             <div class="p-2">
               <button
-                @click.stop="handleAddClick"
+                @click="handleAddClick"
                 class="bg-blue-600 text-white flex items-center justify-center font-semibold gap-2 px-4 py-2 rounded-lg transition-all hover:bg-blue-700 hover:scale-105 w-full"
               >
                 <Icon name="ep:circle-plus-filled" class="text-xl" />
@@ -158,24 +156,23 @@
         </template>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
-import type { Datum, IGetCategoryResponse } from "~/interfaces";
+import type { AsyncDataRequestStatus } from "#app";
+import type { Datum, IData, IGetCategoryResponse } from "~/interfaces";
 
 defineProps<{
   categories: IGetCategoryResponse[] | null;
-  status: any;
+  status: AsyncDataRequestStatus;
   getProducts: Datum[];
-  
 }>();
 
 const isFilterOpen = ref(false);
 
-const handleAddClick = (event: Event) => {
+const handleAddClick = (event: any) => {
+  event.preventDefault();
   event.stopPropagation();
 };
 </script>
-
-<style scoped></style>
