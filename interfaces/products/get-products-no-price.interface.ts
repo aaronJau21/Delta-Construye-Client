@@ -19,7 +19,7 @@ export interface Datum {
   name:                string;
   description:         null;
   stock:               number;
-  price:               string;
+  price:               number;
   status:              boolean;
   sku:                 string;
   porcentage_discount: number;

@@ -148,7 +148,19 @@
                 @click="handleAddClick"
                 class="bg-blue-600 text-white flex items-center justify-center font-semibold gap-2 px-4 py-2 rounded-lg transition-all hover:bg-blue-700 hover:scale-105 w-full"
               >
-                <Icon name="ep:circle-plus-filled" class="text-xl" />
+                <Icon
+                  name="ep:circle-plus-filled"
+                  class="text-xl"
+                  @click.prevent.stop="
+                    shoppingStore.addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      quantity: 1,
+                      image: product.product_images[0].image,
+                    })
+                  "
+                />
                 Agregar
               </button>
             </div>
@@ -161,7 +173,8 @@
 
 <script setup lang="ts">
 import type { AsyncDataRequestStatus } from "#app";
-import type { Datum, IData, IGetCategoryResponse } from "~/interfaces";
+import type { Datum, IGetCategoryResponse } from "~/interfaces";
+import { useShoppingStore } from "~/store/shoppingCart/shopping.strore";
 
 defineProps<{
   categories: IGetCategoryResponse[] | null;
@@ -175,4 +188,6 @@ const handleAddClick = (event: any) => {
   event.preventDefault();
   event.stopPropagation();
 };
+
+const shoppingStore = useShoppingStore();
 </script>
