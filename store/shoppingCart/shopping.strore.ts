@@ -22,6 +22,7 @@ export const useShoppingStore = defineStore("shoppingStore", () => {
   ]);
 
   const addToCart = (item: CartItem) => {
+    console.log(item);
     const existingItem = itemsCart.value.find(
       (cartItem) => cartItem.id === item.id
     );
