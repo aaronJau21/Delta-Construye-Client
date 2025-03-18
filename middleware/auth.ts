@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
   // Si no hay token en las cookies y se intenta acceder al panel
   if (!tokenCookie.value && to.path.startsWith("/panel")) {
-    loginStore.logout(); // Aseguramos que el estado esté limpio
+    loginStore.logout(); // Aseguramos que el estado esté limpios
     return navigateTo("/login");
   }
 
