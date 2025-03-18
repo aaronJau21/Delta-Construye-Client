@@ -109,13 +109,13 @@
         </template>
 
         <template v-else>
-          <NuxtLink
+          <div
             v-for="product in getProducts"
             :key="product.id"
             class="bg-white border border-gray-200 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer p-2 h-[320px] flex flex-col justify-between"
-            :to="`/exclusivo/${product.id}`"
           >
-            <div
+            <NuxtLink
+              :to="`/exclusivo/${product.id}`"
               class="h-40 flex justify-center items-center border-b border-gray-300 bg-white"
             >
               <img
@@ -130,7 +130,7 @@
               >
                 Imagen no disponible
               </div>
-            </div>
+            </NuxtLink>
 
             <div
               class="flex flex-col items-center text-center p-3 gap-1 flex-grow"
@@ -143,28 +143,26 @@
               </span>
             </div>
 
-            <div class="p-2">
-              <button
-                @click="handleAddClick"
+            <button
+              class="p-2"
+              @click.prevent="
+                shoppingStore.addToCart({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  quantity: 1,
+                  image: product.product_images[0].image,
+                })
+              "
+            >
+              <div
                 class="bg-blue-600 text-white flex items-center justify-center font-semibold gap-2 px-4 py-2 rounded-lg transition-all hover:bg-blue-700 hover:scale-105 w-full"
               >
-                <Icon
-                  name="ep:circle-plus-filled"
-                  class="text-xl"
-                  @click.prevent.stop="
-                    shoppingStore.addToCart({
-                      id: product.id,
-                      name: product.name,
-                      price: product.price,
-                      quantity: 1,
-                      image: product.product_images[0].image,
-                    })
-                  "
-                />
+                <Icon name="ep:circle-plus-filled" class="text-xl" />
                 Agregar
-              </button>
-            </div>
-          </NuxtLink>
+              </div>
+            </button>
+          </div>
         </template>
       </div>
     </div>

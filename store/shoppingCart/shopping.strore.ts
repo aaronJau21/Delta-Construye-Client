@@ -85,8 +85,16 @@ export const useShoppingStore = defineStore("shoppingStore", () => {
     const cartCookie = useCookie("shopping-cart");
     if (cartCookie.value) {
       try {
-        const cookieValue = cartCookie.value as string;
-        if (cookieValue && cookieValue.trim() !== "") {
+        const cookieValue =
+          typeof cartCookie.value === "string"
+            ? cartCookie.value
+            : JSON.stringify(cartCookie.value);
+
+        if (
+          cookieValue &&
+          cookieValue !== "undefined" &&
+          cookieValue !== "null"
+        ) {
           itemsCart.value = JSON.parse(cookieValue);
         } else {
           console.warn("Empty cart cookie found");
@@ -100,7 +108,7 @@ export const useShoppingStore = defineStore("shoppingStore", () => {
     }
   };
 
-  if (process) {
+  if (import.meta.client) {
     loadCart();
   }
 
