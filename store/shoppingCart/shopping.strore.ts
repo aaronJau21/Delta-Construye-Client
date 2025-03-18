@@ -108,9 +108,9 @@ export const useShoppingStore = defineStore("shoppingStore", () => {
     }
   };
 
-  if (import.meta.client) {
+  // if (import.meta.client) {
     loadCart();
-  }
+  // }
 
   return {
     itemsCart,
