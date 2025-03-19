@@ -1,54 +1,69 @@
 <template>
-  <!-- component -->
-  <div
-    class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center"
-  >
+  <div class="bg-gray-200 font-sans h-screen w-full flex justify-center items-center">
     <form
       @submit.prevent="updateUser()"
-      class="card w-96 mx-auto bg-white shadow-xl hover:shadow"
+      class="card w-96 bg-white shadow-xl hover:shadow border border-gray-400 rounded-lg p-6"
     >
-      <label for="imageInput">
-        <img
-          class="w-32 mx-auto rounded-full -mt-20 border-8 border-white cursor-pointer"
-          :src="imageSrc"
-          alt="Profile Image"
-        />
-      </label>
-
-      <!-- Hidden file input -->
-      <input
-        id="imageInput"
-        type="file"
-        accept="image/*"
-        class="hidden"
-        @change="handleImageChange"
-      />
-      <div class="text-center mt-2 text-3xl font-medium">
+      <!-- Imagen centrada -->
+      <div class="flex justify-center mb-4">
+        <label for="imageInput">
+          <img
+            class="w-32 h-32 rounded-full border-4 border-gray-300 cursor-pointer"
+            :src="imageSrc"
+            alt="Profile Image"
+          />
+        </label>
         <input
-          type="text"
-          v-model="dataUpdateUser.name"
-          class="text-center outline-none border-b border-transparent hover:border-gray-300 focus:border-b-2 focus:border-green-500 transition-all duration-200 px-2 py-1 w-full"
-        />
-      </div>
-      <div class="text-center mt-2 text-3xl font-medium">
-        <input
-          type="email"
-          v-model="dataUpdateUser.email"
-          class="text-center outline-none border-b border-transparent hover:border-gray-300 focus:border-b-2 focus:border-green-500 transition-all duration-200 px-2 py-1 w-full"
-        />
-      </div>
-      <div class="text-center mt-2 text-3xl font-medium">
-        <input
-          type="text"
-          v-model="dataUpdateUser.phone"
-          class="text-center outline-none border-b border-transparent hover:border-gray-300 focus:border-b-2 focus:border-green-500 transition-all duration-200 px-2 py-1 w-full"
+          id="imageInput"
+          type="file"
+          accept="image/*"
+          class="hidden"
+          @change="handleImageChange"
         />
       </div>
 
-      <div class="flex justify-center">
-        <button
-          class="bg-green-500 px-3 py-1 m-3 rounded-lg text-xl text-white"
-        >
+      <!-- Datos en columna con etiquetas -->
+      <div class="space-y-4">
+        <div class="flex flex-col">
+          <label class="text-gray-600 font-semibold">Nombre:</label>
+          <input
+            type="text"
+            v-model="dataUpdateUser.name"
+            class="border border-gray-300 rounded p-2 w-full"
+          />
+        </div>
+<!-- 
+        <div class="flex flex-col">
+          <label class="text-gray-600 font-semibold">Apellido:</label>
+          <input
+            type="text"
+            v-model="dataUpdateUser.lastName"
+            class="border border-gray-300 rounded p-2 w-full"
+          />
+        </div> -->
+
+        <div class="flex flex-col">
+          <label class="text-gray-600 font-semibold">Email:</label>
+          <input
+            type="email"
+            v-model="dataUpdateUser.email"
+            class="border border-gray-300 rounded p-2 w-full"
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <label class="text-gray-600 font-semibold">Teléfono:</label>
+          <input
+            type="text"
+            v-model="dataUpdateUser.phone"
+            class="border border-gray-300 rounded p-2 w-full"
+          />
+        </div>
+      </div>
+
+      <!-- Botón centrado -->
+      <div class="flex justify-center mt-4">
+        <button class="bg-green-500 px-4 py-2 rounded-lg text-white text-lg font-semibold">
           Guardar
         </button>
       </div>

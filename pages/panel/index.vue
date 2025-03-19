@@ -1,227 +1,64 @@
 <template>
-  <div class="mt-5">
-    <h2 class="text-center text-2xl font-bold italic">Historial de Compas</h2>
+  <div class="max-w-6xl mx-auto p-4 sm:px-6 lg:px-8 font-sans">
+    <div class="text-center text-2xl font-semibold mb-5">Historial de pedidos</div>
+    <!-- Search bar -->
+    <div class="flex flex-col sm:flex-row justify-between gap-3 mb-5">
+      <div class="flex flex-1 border border-gray-300 rounded-md overflow-hidden">
+        <input type="text" placeholder="Buscar pedido..." class="flex-1 px-4 py-2 text-sm focus:outline-none bg-white" />
+        <button class="bg-primary text-white px-4 py-2 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="hidden md:inline">Buscar</span>
+        </button>
+      </div>
+    </div>
 
-    <div class="flex flex-col mt-5 h-[100vh] pt-4">
-      <div
-        class="relative flex flex-col items-center rounded-[10px] border-[1px] border-gray-200 w-[576px] mx-auto p-4 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none"
-      >
-        <div class="flex items-center justify-between rounded-t-3xl p-3 w-full">
-          <div class="text-lg font-bold text-navy-700 dark:text-white">
-            Historial de Compras
+    <!-- Order items -->
+    <div class="space-y-5">
+      <div v-for="(order, index) in orders" :key="index" class="border border-gray-200 rounded overflow-hidden bg-gray-50 rounded-lg">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 py-3 border-b border-gray-200">
+          <div class="font-semibold text-sm">{{ order.status }}</div>
+          <div class="text-xs text-gray-500 mt-2 sm:mt-0">
+            <div>Pedido: {{ order.date }}</div>
+            <div>N°: {{ order.orderNumber }} <span class="text-blue-500 cursor-pointer ml-1">Copiar</span></div>
           </div>
-          <button
-            class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20"
-          >
-            Pagos
-          </button>
-        </div>
-        <div
-          class="flex h-full w-full items-start justify-between rounded-md border-[1px] border-[transparent] dark:hover:border-white/20 bg-white px-3 py-[20px] transition-all duration-150 hover:border-gray-200 dark:!bg-navy-800 dark:hover:!bg-navy-700"
-        >
-          <div class="flex items-center gap-3">
-            <div class="flex h-16 w-16 items-center justify-center">
-              <img
-                class="h-full w-full rounded-xl"
-                src="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/media/Nft1.0fea34cca5aed6cad72b.png"
-                alt=""
-              />
-            </div>
-            <div class="flex flex-col">
-              <h5 class="text-base font-bold text-navy-700 dark:text-white">
-                Colorful Heaven
-              </h5>
-              <p class="mt-1 text-sm font-normal text-gray-600">
-                Mark Benjamin
-              </p>
-            </div>
-          </div>
-          <div
-            class="mt-1 flex items-center justify-center text-navy-700 dark:text-white"
-          >
-            <div>
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 320 512"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="ml-1 flex items-center text-sm font-bold text-navy-700 dark:text-white"
-            >
-              <p></p>
-              0.4
-              <p class="ml-1">ETH</p>
-            </div>
-            <div
-              class="ml-2 flex items-center text-sm font-normal text-gray-600 dark:text-white"
-            >
-              <p>30s</p>
-              <p class="ml-1">ago</p>
-            </div>
+          <div class="flex items-center text-sm cursor-pointer">
+            Detalles del pedido
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
         </div>
-        <div
-          class="flex h-full w-full items-start justify-between rounded-md border-[1px] border-[transparent] dark:hover:border-white/20 bg-white px-3 py-[20px] transition-all duration-150 hover:border-gray-200 dark:!bg-navy-800 dark:hover:!bg-navy-700"
-        >
-          <div class="flex items-center gap-3">
-            <div class="flex h-16 w-16 items-center justify-center">
-              <img
-                class="h-full w-full rounded-xl"
-                src="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/media/Nft6.9ff5403226e81a6fd390.png"
-                alt=""
-              />
-            </div>
-            <div class="flex flex-col">
-              <h5 class="text-base font-bold text-navy-700 dark:text-white">
-                3D Cubes Art
-              </h5>
-              <p class="mt-1 text-sm font-normal text-gray-600">
-                Esthera Jackson
-              </p>
+
+        <div class="p-2 text-sm text-gray-700">{{ order.storeName }}</div>
+
+        <div class="flex flex-col sm:flex-row p-4 gap-4">
+          <!-- Imagen -->
+          <div class="w-full sm:w-24 sm:h-24 bg-gray-100 flex-shrink-0">
+            <img class="w-full max-h-24 object-contain" src="./data/extension.jpg" :alt="order.product.name" />
+          </div>
+
+          <!-- Detalles del producto -->
+          <div class="flex-1">
+            <div class="text-sm font-medium">{{ order.product.name }}</div>
+            <div class="text-xs text-gray-500 mt-1">{{ order.product.specs }}</div>
+            <div class="text-sm mt-2">
+              PEN {{ order.product.price }}
+              <span class="text-gray-500 ml-1">× {{ order.product.quantity }}</span>
             </div>
           </div>
-          <div
-            class="mt-1 flex items-center justify-center text-navy-700 dark:text-white"
-          >
-            <div>
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 320 512"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="ml-1 flex items-center text-sm font-bold text-navy-700 dark:text-white"
-            >
-              <p></p>
-              0.4
-              <p class="ml-1">ETH</p>
-            </div>
-            <div
-              class="ml-2 flex items-center text-sm font-normal text-gray-600 dark:text-white"
-            >
-              <p>30s</p>
-              <p class="ml-1">ago</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex h-full w-full items-start justify-between rounded-md border-[1px] border-[transparent] dark:hover:border-white/20 bg-white px-3 py-[20px] transition-all duration-150 hover:border-gray-200 dark:!bg-navy-800 dark:hover:!bg-navy-700"
-        >
-          <div class="flex items-center gap-3">
-            <div class="flex h-16 w-16 items-center justify-center">
-              <img
-                class="h-full w-full rounded-xl"
-                src="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/media/Nft4.5fc37877b25c9fb9a52d.png"
-                alt=""
-              />
-            </div>
-            <div class="flex flex-col">
-              <h5 class="text-base font-bold text-navy-700 dark:text-white">
-                Swipe Circles
-              </h5>
-              <p class="mt-1 text-sm font-normal text-gray-600">Peter Will</p>
-            </div>
-          </div>
-          <div
-            class="mt-1 flex items-center justify-center text-navy-700 dark:text-white"
-          >
-            <div>
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 320 512"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="ml-1 flex items-center text-sm font-bold text-navy-700 dark:text-white"
-            >
-              <p></p>
-              0.4
-              <p class="ml-1">ETH</p>
-            </div>
-            <div
-              class="ml-2 flex items-center text-sm font-normal text-gray-600 dark:text-white"
-            >
-              <p>4h</p>
-              <p class="ml-1">ago</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex h-full w-full items-start justify-between rounded-md border-[1px] border-[transparent] dark:hover:border-white/20 bg-white px-3 py-[20px] transition-all duration-150 hover:border-gray-200 dark:!bg-navy-800 dark:hover:!bg-navy-700"
-        >
-          <div class="flex items-center gap-3">
-            <div class="flex h-16 w-16 items-center justify-center">
-              <img
-                class="h-full w-full rounded-xl"
-                src="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/media/Nft3.3b3e6a4b3ada7618de6c.png"
-                alt=""
-              />
-            </div>
-            <div class="flex flex-col">
-              <h5 class="text-base font-bold text-navy-700 dark:text-white">
-                Swipe Circles
-              </h5>
-              <p class="mt-1 text-sm font-normal text-gray-600">Manny Gates</p>
-            </div>
-          </div>
-          <div
-            class="mt-1 flex items-center justify-center text-navy-700 dark:text-white"
-          >
-            <div>
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 320 512"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="ml-1 flex items-center text-sm font-bold text-navy-700 dark:text-white"
-            >
-              <p></p>
-              0.4
-              <p class="ml-1">ETH</p>
-            </div>
-            <div
-              class="ml-2 flex items-center text-sm font-normal text-gray-600 dark:text-white"
-            >
-              <p>30s</p>
-              <p class="ml-1">ago</p>
-            </div>
+
+          <!-- Precio y acciones -->
+          <div class="w-full sm:w-44 text-center">
+            <div class="font-bold text-sm mb-2">Total: PEN {{ order.total }}</div>
+            <button class="w-full bg-primary text-white py-2 px-4 rounded-3xl mb-2 text-sm">
+              Añadir a la cesta
+            </button>
+            <button class="w-full border border-gray-700 py-2 px-4 rounded-3xl text-sm">
+              Borrar
+            </button>
+
           </div>
         </div>
       </div>
@@ -229,7 +66,10 @@
   </div>
 </template>
 
+
 <script setup lang="ts">
+import { orders } from "./data/ordersData";
+
 definePageMeta({
   layout: "panel",
   middleware: ["auth"],
