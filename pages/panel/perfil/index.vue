@@ -37,12 +37,37 @@
       <!-- Opciones de cuenta -->
       <nav class="mt-6 w-full">
         <ul class="space-y-2">
-          <li class="p-2 bg-gray-200 rounded-lg font-semibold">Cuenta</li>
-          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer">Cambiar la contraseña</li>
-          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer">Privacidad</li>
-          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer text-red-500">Borrar la cuenta</li>
+          <li class="p-2 bg-gray-200 rounded-lg font-semibold flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <Icon name="mdi:account" class="text-gray-600 text-xl" />
+              Cuenta
+            </div>
+            <Icon name="mdi:chevron-right" class="text-gray-400 text-xl" />
+          </li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <Icon name="mdi:lock" class="text-gray-600 text-xl" />
+              Cambiar la contraseña
+            </div>
+            <Icon name="mdi:chevron-right" class="text-gray-400 text-xl" />
+          </li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <Icon name="mdi:shield-lock" class="text-gray-600 text-xl" />
+              Privacidad
+            </div>
+            <Icon name="mdi:chevron-right" class="text-gray-400 text-xl" />
+          </li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer text-red-500 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <Icon name="mdi:delete" class="text-red-500 text-xl" />
+              Borrar la cuenta
+            </div>
+            <Icon name="mdi:chevron-right" class="text-red-400 text-xl" />
+          </li>
         </ul>
       </nav>
+
     </aside>
 
     <!-- Área principal -->
@@ -51,7 +76,7 @@
       <h1 class="text-2xl font-bold text-center">Mi perfil</h1>
 
       <!-- Contenedor que centra el formulario en X y Y -->
-      <div class="flex flex-1 items-center justify-center">
+      <div class="flex flex-1 items-center justify-center mb-40">
         <form @submit.prevent="updateUser" class="bg-white shadow-md rounded-lg p-6 max-w-lg w-full flex flex-col">
           <div class="mb-4">
             <label class="block text-gray-600 font-semibold">Nombre:</label>
