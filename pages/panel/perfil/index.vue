@@ -1,75 +1,82 @@
 <template>
-  <div class="bg-gray-200 font-sans h-screen w-full flex justify-center items-center">
-    <form
-      @submit.prevent="updateUser()"
-      class="card w-96 bg-white shadow-xl hover:shadow border border-gray-400 rounded-lg p-6"
-    >
-      <!-- Imagen centrada -->
-      <div class="flex justify-center mb-4">
-        <label for="imageInput">
-          <img
-            class="w-32 h-32 rounded-full border-4 border-gray-300 cursor-pointer"
-            :src="imageSrc"
-            alt="Profile Image"
-          />
+<div class="flex h-full bg-gray-100" style="min-height: calc(100vh - 80px);">
+
+    <!-- Barra lateral -->
+    <aside class="w-[300px] bg-white shadow-md p-6 flex flex-col items-center border ">
+      <div class="flex flex-col items-center w-full">
+        <!-- Imagen de perfil -->
+        <label for="imageInput" class="relative cursor-pointer group">
+          <div class="flex justify-center rounded-full overflow-hidden border-2 border-gray-300">
+            <label for="imageInput">
+              <div class="rounded-full flex items-center justify-center bg-white">
+                <img
+                  v-if="imageSrc"
+                  class="w-32 h-32 rounded-full cursor-pointer object-cover"
+                  :src="imageSrc"
+                  alt="Profile User"
+                />
+                <img
+                  v-else
+                  class="w-32 h-32 rounded-full cursor-pointer object-cover"
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                  alt="Profile User"
+                />
+              </div>
+            </label>
+            <input
+              id="imageInput"
+              type="file"
+              accept="image/*"
+              class="hidden"
+              @change="handleImageChange"
+            />
+          </div>
         </label>
-        <input
-          id="imageInput"
-          type="file"
-          accept="image/*"
-          class="hidden"
-          @change="handleImageChange"
-        />
       </div>
 
-      <!-- Datos en columna con etiquetas -->
-      <div class="space-y-4">
-        <div class="flex flex-col">
-          <label class="text-gray-600 font-semibold">Nombre:</label>
-          <input
-            type="text"
-            v-model="dataUpdateUser.name"
-            class="border border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-<!-- 
-        <div class="flex flex-col">
-          <label class="text-gray-600 font-semibold">Apellido:</label>
-          <input
-            type="text"
-            v-model="dataUpdateUser.lastName"
-            class="border border-gray-300 rounded p-2 w-full"
-          />
-        </div> -->
+      <!-- Opciones de cuenta -->
+      <nav class="mt-6 w-full">
+        <ul class="space-y-2">
+          <li class="p-2 bg-gray-200 rounded-lg font-semibold">Cuenta</li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer">Cambiar la contraseña</li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer">Privacidad</li>
+          <li class="p-2 hover:bg-gray-100 rounded-lg cursor-pointer text-red-500">Borrar la cuenta</li>
+        </ul>
+      </nav>
+    </aside>
 
-        <div class="flex flex-col">
-          <label class="text-gray-600 font-semibold">Email:</label>
-          <input
-            type="email"
-            v-model="dataUpdateUser.email"
-            class="border border-gray-300 rounded p-2 w-full"
-          />
-        </div>
+    <!-- Área principal -->
+    <div class="flex-1 p-10 flex flex-col">
+      <!-- Título arriba centrado -->
+      <h1 class="text-2xl font-bold text-center">Mi perfil</h1>
 
-        <div class="flex flex-col">
-          <label class="text-gray-600 font-semibold">Teléfono:</label>
-          <input
-            type="text"
-            v-model="dataUpdateUser.phone"
-            class="border border-gray-300 rounded p-2 w-full"
-          />
-        </div>
+      <!-- Contenedor que centra el formulario en X y Y -->
+      <div class="flex flex-1 items-center justify-center">
+        <form @submit.prevent="updateUser" class="bg-white shadow-md rounded-lg p-6 max-w-lg w-full flex flex-col">
+          <div class="mb-4">
+            <label class="block text-gray-600 font-semibold">Nombre:</label>
+            <input type="text" v-model="dataUpdateUser.name" class="border border-gray-300 rounded p-2 w-full" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-600 font-semibold">Dirección de correo electrónico:</label>
+            <input type="email" v-model="dataUpdateUser.email" class="border border-gray-300 rounded p-2 w-full" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-600 font-semibold">Teléfono:</label>
+            <input type="text" v-model="dataUpdateUser.phone" class="border border-gray-300 rounded p-2 w-full" />
+          </div>
+          <div class="flex justify-center mt-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg text-lg font-semibold">
+              Actualizar la cuenta
+            </button>
+          </div>
+        </form>
       </div>
-
-      <!-- Botón centrado -->
-      <div class="flex justify-center mt-4">
-        <button class="bg-green-500 px-4 py-2 rounded-lg text-white text-lg font-semibold">
-          Guardar
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </template>
+
+
 
 <script setup lang="ts">
 definePageMeta({
@@ -81,7 +88,9 @@ import { ref } from "vue";
 import { useUserStore } from "~/store/user/user.store";
 import type { IUser } from "~/interfaces";
 
-const imageSrc = ref("https://avatars.githubusercontent.com/u/67946056?v=4");
+const imageSrc = ref(
+  "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+);
 const userStore = useUserStore();
 const config = useRuntimeConfig();
 const userCookie = useCookie<IUser>("user");

@@ -29,7 +29,7 @@
           </button>
         </div>
       </div>
-      <div class="flex justify-between gap-x-5">
+      <div class="flex justify-between items-center gap-x-5">
         <Icon
           name="material-symbols:shopping-cart-outline"
           size="25"
@@ -45,9 +45,10 @@
         <div v-if="user">
           <button
             @click="showModalSearch = !showModalSearch"
-            class="flex items-center gap-2 bg-gray-300 rounded-full px-3 py-1"
+            class="flex items-center justify-center bg-gray-300 w-10 h-10 rounded-full"
           >
-            <p class="text-xl">{{ getUser?.name?.[0] }}</p>
+            <!-- <p class="text-xl">{{ getUser?.name?.[0] }}</p> -->
+            <img :src=imageSrc alt="Usuario" class="rounded-full">
           </button>
           <CardInfoHistoryPayload
             :getUser="getUser"
@@ -92,6 +93,9 @@ const getUser = ref<IUser | null>(null);
 const searchQuery = ref("");
 const showDropdown = ref(false);
 const showModalSearch = ref(false);
+const imageSrc = ref(
+  "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+);
 
 const handleSearch = () => {
   // Lógica de búsqueda aquí
