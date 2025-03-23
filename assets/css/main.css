@@ -10,6 +10,10 @@ a.router-link-exact-active {
   @apply border-b border-b-primary;
 }
 
+.list-title {
+  @apply text-lg font-bold;
+}
+
 ::-webkit-scrollbar {
   height: 10px;
   width: 10px;
