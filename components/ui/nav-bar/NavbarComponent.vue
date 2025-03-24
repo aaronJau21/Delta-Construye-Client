@@ -11,7 +11,7 @@
         <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-48" />
       </NuxtLink>
 
-      <div class="flex items-center gap-x-5 text-lg">
+      <div class="lg:flex lg:items-center lg:gap-x-5 lg:text-lg hidden">
         <div
           class="flex items-center gap-x-1 cursor-pointer hover:text-primary"
         >
