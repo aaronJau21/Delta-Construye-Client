@@ -11,15 +11,7 @@ interface CartItem {
 }
 
 export const useShoppingStore = defineStore("shoppingStore", () => {
-  const itemsCart = ref<CartItem[]>([
-    {
-      id: 1,
-      name: "Cemento Sol",
-      price: 10,
-      quantity: 1,
-      image: "/img/home/products/cemento_sol_2.jpg",
-    },
-  ]);
+  const itemsCart = ref<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
     console.log(item);
@@ -109,7 +101,7 @@ export const useShoppingStore = defineStore("shoppingStore", () => {
   };
 
   // if (import.meta.client) {
-    loadCart();
+  loadCart();
   // }
 
   return {

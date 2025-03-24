@@ -6,29 +6,26 @@
     </div>
 
     <!-- Header Mobile -->
-    <div class="flex justify-between items-center gap-2">
+    <div class="flex justify-around items-center gap-2">
       <NuxtLink to="/">
         <img src="/logo.png" alt="Logo de Imperio Ferretero" class="w-48" />
       </NuxtLink>
-      <div
-        class="w-[35rem] bg-white border border-gray-400 rounded hidden md:block"
-      >
-        <div class="flex">
-          <input
-            v-model="searchQuery"
-            placeholder="Buscar"
-            class="w-[35rem] p-2 border-none outline-none rounded-l"
-          />
-          <button
-            class="flex items-center bg-primary px-3 py-2 text-white rounded-r hover:bg-red-500 transition-colors"
-            aria-label="Buscar"
-            @click="handleSearch"
-          >
-            <Icon name="weui:search-filled" />
-            <span class="ml-2">Buscar</span>
-          </button>
+
+      <div class="flex items-center gap-x-5 text-lg">
+        <div
+          class="flex items-center gap-x-1 cursor-pointer hover:text-primary"
+        >
+          <Icon name="material-symbols:call" />
+          <p>+51 992843375</p>
+        </div>
+        <div
+          class="flex items-center gap-x-1 cursor-pointer hover:text-primary"
+        >
+          <Icon name="uim:house-user" />
+          <p>AV. TOMAS MARSANO NRO. 4789</p>
         </div>
       </div>
+
       <div class="flex justify-between items-center gap-x-5">
         <Icon
           name="material-symbols:shopping-cart-outline"
@@ -48,7 +45,7 @@
             class="flex items-center justify-center bg-gray-300 w-10 h-10 rounded-full"
           >
             <!-- <p class="text-xl">{{ getUser?.name?.[0] }}</p> -->
-            <img :src=imageSrc alt="Usuario" class="rounded-full">
+            <img :src="imageSrc" alt="Usuario" class="rounded-full" />
           </button>
           <CardInfoHistoryPayload
             :getUser="getUser"
