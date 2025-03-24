@@ -3,14 +3,15 @@
     v-if="showModalSearch"
     class="bg-white absolute top-20 z-50 right-0 w-56 p-5 rounded shadow-2xl"
   >
-  <div class="flex items-center gap-x-3">
-    <button class="flex items-center justify-center bg-gray-300 w-10 h-10 rounded-full">
-      <!-- <p class="text-xl">{{ getUser?.name?.[0] }}</p> -->
-      <img :src=imageSrc alt="Usuario" class="rounded-full">
-
-    </button>
-    <p>{{ getUser?.name }}</p>
-  </div>
+    <div class="flex items-center gap-x-3">
+      <button
+        class="flex items-center justify-center bg-gray-300 w-10 h-10 rounded-full"
+      >
+        <!-- <p class="text-xl">{{ getUser?.name?.[0] }}</p> -->
+        <img :src="imageSrc" alt="Usuario" class="rounded-full" />
+      </button>
+      <p>{{ getUser?.name }}</p>
+    </div>
     <div class="border-t border-gray-300 mt-3 pt-3 w-full flex flex-col">
       <NuxtLink
         to="/panel"
@@ -58,7 +59,6 @@ const loginStore = useLoginStore();
 const imageSrc = ref(
   "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
 );
-
 </script>
 
 <style scoped></style>
