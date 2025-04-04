@@ -103,7 +103,7 @@
 </template>
 
 <script setup lang="ts">
-import ButtonHome from "~/components/shared/button-home/ButtonHome.vue";
+import ButtonHome from "~/components/ui/button-home/ButtonHome.vue";
 import { useRegisterStore } from "~/store/auth/register.store";
 
 export interface RegisterForm {

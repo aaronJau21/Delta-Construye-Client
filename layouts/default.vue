@@ -1,22 +1,19 @@
 <template>
-  <div class="relative min-h-screen flex flex-col">
+  <div class="relative min-h-screen bg-white text-global-text flex flex-col">
     <NavbarComponent />
     <slot />
+
+    <ModalShowRoutesCategory />
+    <ButtonWhatsApp />
     <FooterComponent />
-    <a
-      href="https://wa.me/992843375"
-      target="_blank"
-      class="fixed bottom-5 right-5 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center w-14 h-14 z-50"
-      aria-label="Contactar por WhatsApp"
-    >
-      <Icon name="ic:baseline-whatsapp" size="32" />
-    </a>
   </div>
 </template>
 
 <script setup lang="ts">
+import ButtonWhatsApp from "~/components/ui/button-whatsApp/ButtonWhatsApp.vue";
 import FooterComponent from "~/components/ui/footer/FooterComponent.vue";
-import NavbarComponent from "~/components/ui/nav-bar/NavbarComponent.vue";
+import ModalShowRoutesCategory from "~/components/ui/navBar/ModalShowRoutesCategory.vue";
+import NavbarComponent from "~/components/ui/navBar/NavbarComponent.vue";
 </script>
 
 <style scoped></style>

@@ -42,6 +42,9 @@ importers:
       '@iconify-json/fa':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/fa6-solid':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@iconify-json/heroicons-outline':
         specifier: ^1.2.1
         version: 1.2.1
@@ -520,6 +523,9 @@ packages:
 
   '@iconify-json/ep@1.2.2':
     resolution: {integrity: sha512-/IH1GjQKH5uK7lQAOjwPxdjkU98OWUWnHYCdg/EkeebBKEteotaOMeEz5pR1egqMcI7zPFdFBTcGyCHla1ddQw==}
+
+  '@iconify-json/fa6-solid@1.2.3':
+    resolution: {integrity: sha512-C5o8YJF+ekrS4wRb/6/0SE2KjRyJlCg++IOVC/fineiRinITivsmzFRNW1MQX2xfDZ1T7bxeKxLN6lcaTG3jGA==}
 
   '@iconify-json/fa@1.2.1':
     resolution: {integrity: sha512-aY2+tQNWq5ch+ShtAz3KKbNrFfwf4BPrXvyN7S4/lcf6Wms+kIxsd7C7KortzHZhoBnbhVN+qo+YUWLW7rLs9Q==}
@@ -3736,6 +3742,10 @@ snapshots:
     optional: true
 
   '@iconify-json/ep@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/fa6-solid@1.2.3':
     dependencies:
       '@iconify/types': 2.0.0
 

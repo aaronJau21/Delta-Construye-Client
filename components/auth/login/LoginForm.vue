@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ButtonHome from "~/components/shared/button-home/ButtonHome.vue";
+import ButtonHome from "~/components/ui/button-home/ButtonHome.vue";
 import { useLoginStore } from "~/store/auth/login.store";
 const router = useRouter();
 

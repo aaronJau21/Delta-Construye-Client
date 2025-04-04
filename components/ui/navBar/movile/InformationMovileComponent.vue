@@ -1,0 +1,38 @@
+<template>
+    <div class="flex items-center gap-2 border-b border-[#272727] md:hidden">
+    <div class="text-center border-r p-3 border-[#272727]">
+      <button>
+        <Icon
+          name="charm:menu-hamburger"
+          class="text-3xl text-primary hover:text-secondary cursor-pointer transition-colors"
+        />
+        <p class="text-md border-b">Categoria</p>
+      </button>
+    </div>
+    <div class="flex items-center gap-x-5 justify-between w-full">
+      <div>
+        <NuxtLink href="/">
+          <img src="/logo.png" class="w-72" >
+        </NuxtLink>
+      </div>
+      <div class="flex gap-x-3 w-28">
+        <Icon
+          name="ix:user-profile"
+          class="text-3xl text-primary hover:text-secondary cursor-pointer transition-colors"
+        />
+        <Icon
+          name="ix:shopping-cart-filled"
+          class="text-3xl text-primary hover:text-secondary cursor-pointer transition-colors"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+
+</script>
+
+<style scoped>
+
+</style>
