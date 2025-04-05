@@ -22,9 +22,10 @@
           type="text"
           placeholder="Buscar..."
           class="border-0 outline-none rounded w-full pl-5"
+          v-model="nameProduct"
         />
-        <div>
-          <Icon name="heroicons-solid:search" />
+        <div class="flex justify-center items-center">
+          <Icon name="heroicons-solid:search" @click="goRoute()" class="cursor-pointer text-xl"/>
         </div>
       </div>
       <div class="flex gap-x-3 w-28">
@@ -52,6 +53,12 @@ interface Props {
 defineProps<Props>();
 
 const showCategory = useShowRoutesCategory();
+const nameProduct = ref();
+const router = useRouter();
+
+const goRoute = () => {
+  router.push(`/buscador-product/${nameProduct.value}`);
+};
 </script>
 
 <style scoped></style>

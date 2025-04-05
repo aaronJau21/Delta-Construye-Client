@@ -26,6 +26,7 @@ import RedesSocialesComponent from "./RedesSocialesComponent.vue";
 import InformationComponent from "./InformationComponent.vue";
 import RutasPageComponent from "./RutasPageComponent.vue";
 import InformationMovileComponent from "./movile/InformationMovileComponent.vue";
+import CardInfoHistoryPayload from "../cart/CardInfoHistoryPayload.vue";
 import type { IUser } from "~/interfaces";
 import CartModal from "../cart/CartModal.vue";
 
@@ -34,7 +35,7 @@ const showModalSearch = ref(false);
 const isCartModalOpen = ref(false);
 
 const isCartModalOpenTrue = () => {
-  console.log('hola')
+  console.log("hola");
   isCartModalOpen.value = true;
 };
 </script>

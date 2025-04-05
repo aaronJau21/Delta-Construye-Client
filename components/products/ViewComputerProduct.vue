@@ -161,7 +161,7 @@
 
 <script setup lang="ts">
 import type { AsyncDataRequestStatus } from "#app";
-import type { Datum, IData, IGetCategoryResponse } from "~/interfaces";
+import type { Datum, IGetCategoryResponse } from "~/interfaces";
 
 defineProps<{
   categories: IGetCategoryResponse[] | null;
