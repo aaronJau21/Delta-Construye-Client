@@ -28,8 +28,8 @@ const redes: Redes1[] = [
   },
   {
     icon: "ic:baseline-whatsapp",
-    tiitle: "+51 992 843 375",
-    href: "https://wa.me/992843375",
+    tiitle: "+51 936 939 501",
+    href: "https://wa.me/936939501",
   },
 ];
 </script>

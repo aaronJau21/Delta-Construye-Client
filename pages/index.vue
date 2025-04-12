@@ -3,15 +3,16 @@
     <CarrouselComponent />
     <CategoriasDestacados />
     <!-- <OfertasDelMesComponent /> -->
+     <AlphaComponen />
     <ClientesComponent />
   </div>
 </template>
 
 <script setup lang="ts">
+import AlphaComponen from "~/components/home/AlphaComponen.vue";
 import CarrouselComponent from "~/components/home/CarrouselComponent.vue";
 import CategoriasDestacados from "~/components/home/CategoriasDestacados.vue";
 import ClientesComponent from "~/components/home/ClientesComponent.vue";
-import OfertasDelMesComponent from "~/components/home/OfertasDelMesComponent.vue";
 </script>
 
 <style scoped></style>
