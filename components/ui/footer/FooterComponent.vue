@@ -34,7 +34,7 @@
             <h2 class="text-3xl font-bold text-primary">Contáctanos</h2>
             <div class="text-center flex flex-col gap-y-2 mt-1">
               <p>
-                Teléfono: <span class="font-semibold"> +51 936 939 501 </span>
+                Teléfono: <span class="font-semibold"> +51 917 084 506 </span>
               </p>
               <p class="font-semibold text-xs">
                 ALPHA.SOLUCIONES.NEGOCIOS@GMAIL.COM
