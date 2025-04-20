@@ -1,6 +1,6 @@
 <template>
   <nav class="mx-auto w-auto">
-    <div class="flex gap-x-5 my-3">
+    <div class="flex justify-around w-screen my-3">
       <NuxtLink
         v-for="route in routes"
         :key="route.title"
