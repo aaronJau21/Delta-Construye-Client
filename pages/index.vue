@@ -1,9 +1,12 @@
 <template>
-  <div class="w-full flex flex-col justify-center items-center gap-8 py-6">
+  <div
+    class=" w-full flex flex-col justify-center items-center gap-8 py-6"
+  >
+    
     <CarrouselComponent />
     <CategoriasDestacados />
     <!-- <OfertasDelMesComponent /> -->
-     <AlphaComponen />
+    <AlphaComponen />
     <ClientesComponent />
   </div>
 </template>
@@ -13,6 +16,7 @@ import AlphaComponen from "~/components/home/AlphaComponen.vue";
 import CarrouselComponent from "~/components/home/CarrouselComponent.vue";
 import CategoriasDestacados from "~/components/home/CategoriasDestacados.vue";
 import ClientesComponent from "~/components/home/ClientesComponent.vue";
+import ImageComponent from "~/components/ui/image/ImageComponent.vue";
 </script>
 
 <style scoped></style>
