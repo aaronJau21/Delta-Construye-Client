@@ -111,7 +111,6 @@
 const servicios = ref<string[]>([
   "DISEÑOPROPYECTOS.png",
   "ELECTRICAS.png",
-  "ELECTRONICOS.jpg",
   "MECANICAS.png",
   "OBRASCIVILES.png",
   "PINTIURA.png",
