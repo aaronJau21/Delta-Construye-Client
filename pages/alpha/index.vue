@@ -39,7 +39,7 @@
       <h2 class="text-center text-3xl font-bold text-[#006633]">
         NUESTROS SERVICIOS
       </h2>
-      <div class="grid grid-cols-3">
+      <div class="grid grid-cols-3 gap-5">
         <div v-for="servicio of servicios" :key="servicio">
           <img :src="`/alpha/${servicio}`" :alt="servicio"
         </div>
@@ -114,6 +114,7 @@ const servicios = ref<string[]>([
   "MECANICAS.png",
   "OBRASCIVILES.png",
   "PINTIURA.png",
+  "SANITARIAS.png"
 ]);
 </script>
 
