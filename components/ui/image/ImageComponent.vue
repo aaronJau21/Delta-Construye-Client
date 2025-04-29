@@ -1,7 +1,7 @@
 <template>
   <div class="absolute top-0 h-screen w-screen z-50" v-if="show">
     <div class="bg-black h-screen w-screen opacity-40"></div>
-    <div class="absolute top-5 right-5">
+    <div class="absolute top-[32vh] right-[31.5vw] z-50">
       <button class="bg-white rounded-full size-7" @click="changeShow">
         X
       </button>
