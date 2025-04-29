@@ -23,9 +23,14 @@
           placeholder="Buscar..."
           class="border-0 outline-none rounded w-full pl-5"
           v-model="nameProduct"
+          @keyup.enter="goRoute()"
         />
         <div class="flex justify-center items-center">
-          <Icon name="heroicons-solid:search" @click="goRoute()" class="cursor-pointer text-xl"/>
+          <Icon
+            name="heroicons-solid:search"
+            @click="goRoute()"
+            class="cursor-pointer text-xl"
+          />
         </div>
       </div>
       <div class="flex gap-x-3 w-28">

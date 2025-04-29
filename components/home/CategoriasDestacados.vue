@@ -7,7 +7,7 @@
         :key="categorias.title"
         class="relative flex justify-center"
       >
-        <img :src="categorias.img" :alt="categorias.title">
+        <img :src="categorias.img" :alt="categorias.title"  class="rounded-md  shadow-2xl shadow-gray-500"/>
       </div>
     </div>
   </div>

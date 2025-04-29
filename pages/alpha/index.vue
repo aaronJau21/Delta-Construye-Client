@@ -40,8 +40,8 @@
         NUESTROS SERVICIOS
       </h2>
       <div class="grid grid-cols-3 gap-5">
-        <div v-for="servicio of servicios" :key="servicio">
-          <img :src="`/alpha/${servicio}`" :alt="servicio"
+        <div v-for="servicio of servicios" :key="servicio" class="shadow-xl shadow-gray-400">
+          <img :src="`/alpha/${servicio}`" :alt="servicio" class="rounded"/>
         </div>
       </div>
     </div>

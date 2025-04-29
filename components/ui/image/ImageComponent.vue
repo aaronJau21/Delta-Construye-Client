@@ -6,11 +6,11 @@
         X
       </button>
     </div>
-    <div class="absolute top-5 left-5 flex">
+    <div class="absolute top-[31vh] left-[29vw] flex">
       <img
         src="/imagenPrincipal.jpg"
         alt="imagen Principal"
-        class="w-[95vw] h-[95vh]"
+        class="w-[40vw] h-[40vh]"
       />
     </div>
   </div>
